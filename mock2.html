@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Square Shopping Center — Concept Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  /* ── Tokens ───────────────────────────────────────── */
+  :root {
+    --ink:       #1a1410;
+    --white:     #ffffff;
+    --gray-1:    #f7f7f5;
+    --gray-2:    #eeede9;
+    --gray-3:    #c8c4bc;
+    --leaf:      #2f5d3a;
+    --leaf-deep: #1d3d24;
+    --leaf-light:#d4e8da;
+    --sun:       #e8762a;
+    --gold:      #d4a437;
+    --border:    rgba(26,20,16,0.10);
+    --radius:    12px;
+    --radius-lg: 20px;
+    --shadow:    0 2px 16px rgba(26,20,16,0.08);
+    --shadow-hover: 0 8px 32px rgba(26,20,16,0.13);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Inter Tight', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+
+  /* ── Mockup banner ───────────────────────────────── */
+  .mockup-banner {
+    background: var(--ink);
+    color: rgba(255,255,255,0.7);
+    padding: 9px 24px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .mockup-banner span { color: #fff; }
+
+  /* ── Navigation ──────────────────────────────────── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    gap: 40px;
+  }
+  .nav-logo img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    flex: 1;
+    justify-content: center;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    opacity: 0.75;
+    transition: opacity 0.15s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    background: var(--leaf);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    transition: background 0.18s;
+  }
+  .nav-cta:hover { background: var(--leaf-deep); }
+
+  /* ── Hero (video) ────────────────────────────────── */
+  .hero {
+    position: relative;
+    height: 92vh;
+    min-height: 560px;
+    max-height: 860px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(10,20,12,0.88) 0%,
+      rgba(10,20,12,0.45) 45%,
+      rgba(10,20,12,0.15) 100%
+    );
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 72px;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    color: rgba(255,255,255,0.9);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .hero-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 500;
+    color: #a8d4b4;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.72);
+    max-width: 480px;
+    line-height: 1.65;
+    margin-bottom: 32px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 52px;
+  }
+  .btn-primary {
+    background: var(--leaf);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .btn-primary:hover { background: var(--leaf-deep); }
+  .btn-outline {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.18s, border-color 0.18s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.6); }
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 28px;
+    max-width: 520px;
+  }
+  .hero-stat {
+    flex: 1;
+    padding-right: 24px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    margin-right: 24px;
+  }
+  .hero-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+  .stat-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Category tabs ───────────────────────────────── */
+  .tabs-strip {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+  }
+  .tabs-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    padding: 14px 0;
+  }
+  .tab {
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(26,20,16,0.6);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .tab:hover { background: var(--gray-1); color: var(--ink); }
+  .tab.active {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  /* ── Section wrapper ─────────────────────────────── */
+  .section {
+    padding: 72px 40px;
+  }
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-header {
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--leaf);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: rgba(26,20,16,0.6);
+    max-width: 520px;
+    line-height: 1.65;
+  }
+
+  /* ── Vendor cards ────────────────────────────────── */
+  .vendor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .vendor-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .vendor-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+  }
+  .vendor-photo {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+  .vendor-body {
+    padding: 22px 24px 20px;
+  }
+  .vendor-category {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--leaf);
+    margin-bottom: 6px;
+  }
+  .vendor-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .vendor-desc {
+    font-size: 13.5px;
+    color: rgba(26,20,16,0.6);
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+  .cta-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .cta-btn {
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: all 0.15s;
+    border: 1.5px solid transparent;
+  }
+  .cta-call {
+    background: var(--leaf);
+    color: #fff;
+  }
+  .cta-call:hover { background: var(--leaf-deep); }
+  .cta-menu {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--gray-3);
+  }
+  .cta-menu:hover { border-color: var(--ink); background: var(--gray-1); }
+  .cta-more {
+    background: transparent;
+    color: rgba(26,20,16,0.5);
+    border-color: var(--border);
+  }
+  .cta-more:hover { color: var(--ink); border-color: var(--gray-3); }
+
+  .see-all-wrap {
+    text-align: center;
+    margin-top: 36px;
+  }
+  .see-all-link {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 1.5px solid var(--gray-3);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    transition: border-color 0.18s, background 0.18s;
+  }
+  .see-all-link:hover { border-color: var(--ink); background: var(--gray-1); }
+
+  /* ── Marketplace highlight strip ─────────────────── */
+  .highlight-strip {
+    background: var(--leaf-deep);
+    padding: 52px 40px;
+  }
+  .highlight-strip-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hs-text { flex: 1; min-width: 260px; }
+  .hs-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 10px;
+  }
+  .hs-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .hs-title em { font-style: italic; font-weight: 500; color: #a8d4b4; }
+  .hs-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+  .hs-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hs-stat { text-align: center; }
+  .hs-stat-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hs-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+  }
+
+  /* ── Marketplace vendor grid ─────────────────────── */
+  .mkt-section { background: var(--gray-1); }
+  .mkt-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .mkt-cat {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .mkt-cat-photo {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+  }
+  .mkt-cat-body { padding: 18px 20px 20px; }
+  .mkt-cat-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .mkt-list { list-style: none; }
+  .mkt-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12.5px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 8px;
+  }
+  .mkt-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .mkt-list li span { flex: 1; color: var(--ink); }
+  .mkt-list a {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--leaf);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .mkt-list a:hover { text-decoration: underline; }
+  .mkt-more {
+    font-size: 11.5px;
+    color: var(--leaf);
+    font-weight: 600;
+    margin-top: 8px;
+    opacity: 0.8;
+  }
+
+  /* ── Shops & Services ────────────────────────────── */
+  .shops-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 12px;
+  }
+  .shop-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: row;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .shop-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+  .shop-card-photo {
+    width: 180px;
+    flex-shrink: 0;
+    object-fit: cover;
+    display: block;
+  }
+  .shop-card-body {
+    padding: 24px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+  .shop-cat {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--leaf);
+  }
+  .shop-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    line-height: 1.2;
+  }
+  .shop-desc {
+    font-size: 13px;
+    color: rgba(26,20,16,0.6);
+    line-height: 1.55;
+    margin-top: 2px;
+    margin-bottom: 6px;
+  }
+  .shop-learn {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--leaf);
+    text-decoration: none;
+  }
+  .shop-learn:hover { text-decoration: underline; }
+
+  /* ── Visit / Hours ───────────────────────────────── */
+  .visit-section { background: var(--gray-1); }
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .visit-joke {
+    background: #fffbea;
+    border: 1.5px solid #f0d96b;
+    border-radius: var(--radius-lg);
+    padding: 24px 32px 20px;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .vj-setup {
+    font-size: 13px;
+    font-weight: 500;
+    color: #9a7c3a;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+  .vj-punchline {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--leaf-deep);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .vj-tag {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--sun);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .loc-block { }
+  .loc-label {
+    display: inline-block;
+    background: var(--leaf);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .loc-label.annex { background: #1f4d5c; }
+  .loc-address {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .hours-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 13.5px;
+  }
+  .hours-tbl td { padding: 8px 0; border-bottom: 1px solid var(--border); color: rgba(26,20,16,0.75); }
+  .hours-tbl td:last-child { text-align: right; font-weight: 600; color: var(--ink); }
+  .hours-tbl tr:last-child td { border-bottom: none; }
+  .loc-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 16px;
+  }
+  .loc-meta span { font-size: 13px; color: rgba(26,20,16,0.55); }
+  .dir-link {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--leaf);
+    text-decoration: none;
+  }
+  .dir-link:hover { text-decoration: underline; }
+  .loc-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+  .map-placeholder {
+    background: var(--gray-2);
+    border-radius: var(--radius-lg);
+    height: 100%;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    gap: 10px;
+  }
+  .map-pin-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--leaf);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    position: relative;
+  }
+  .map-pin-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 50%;
+  }
+  .map-label-text {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: center;
+  }
+  .map-sub-text { font-size: 13px; color: rgba(26,20,16,0.5); text-align: center; }
+  .map-open-link {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--leaf);
+    text-decoration: none;
+  }
+  .map-open-link:hover { text-decoration: underline; }
+
+  /* ── Leasing ─────────────────────────────────────── */
+  .leasing-hero {
+    background: var(--leaf-deep);
+    color: var(--white);
+    padding: 88px 40px;
+  }
+  .leasing-hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .leasing-hero .eyebrow { color: var(--gold); }
+  .leasing-hero .section-title { color: var(--white); margin-bottom: 16px; }
+  .leasing-hero .section-desc { color: var(--white); opacity: 0.75; max-width: 100%; }
+  .leasing-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 36px;
+  }
+  .leasing-hl {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .leasing-hl-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .leasing-hl-label { font-size: 12.5px; opacity: 0.68; line-height: 1.4; }
+  .leasing-contact-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    color: var(--ink);
+  }
+  .leasing-contact-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .leasing-contact-sub {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 28px;
+  }
+  .leasing-contact-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .leasing-contact-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .lcr-icon {
+    width: 38px; height: 38px;
+    background: var(--leaf-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--leaf);
+  }
+  .lcr-text { font-size: 14px; line-height: 1.5; }
+  .lcr-text strong { display: block; font-weight: 600; font-size: 13px; opacity: 0.55; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+  .lcr-text a { color: var(--leaf); text-decoration: none; font-weight: 600; }
+  .lcr-text a:hover { text-decoration: underline; }
+  .leasing-cta-btn {
+    display: block;
+    width: 100%;
+    background: var(--leaf);
+    color: #fff;
+    text-align: center;
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .leasing-cta-btn:hover { background: var(--leaf-deep); transform: translateY(-1px); }
+
+  .leasing-why { padding: 88px 40px; background: var(--white); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 52px;
+  }
+  .why-card {
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--gray-1);
+  }
+  .why-icon {
+    width: 44px; height: 44px;
+    background: var(--leaf-light);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    color: var(--leaf);
+  }
+  .why-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .why-desc { font-size: 13.5px; opacity: 0.62; line-height: 1.6; }
+
+  .leasing-spaces { padding: 88px 40px; background: var(--gray-1); }
+  .spaces-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .space-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+  }
+  .space-card-header { height: 8px; }
+  .space-card-header.retail  { background: var(--sun); }
+  .space-card-header.market  { background: var(--leaf); }
+  .space-card-header.office  { background: var(--ocean); }
+  .space-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+  .space-type-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 4px;
+  }
+  .space-type-badge.retail { background: #fde8d4; color: #c45614; }
+  .space-type-badge.market { background: var(--leaf-light); color: var(--leaf-deep); }
+  .space-type-badge.office { background: #d4e6ed; color: var(--ocean); }
+  .space-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .space-sqft { font-size: 13px; opacity: 0.55; font-weight: 500; }
+  .space-desc { font-size: 14px; opacity: 0.65; line-height: 1.6; flex: 1; }
+  .space-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .space-features li {
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .space-features li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--leaf);
+    flex-shrink: 0;
+  }
+  .space-card-footer {
+    padding: 20px 28px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .space-avail { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .space-avail.open { color: var(--leaf); }
+  .space-avail.limited { color: #c45614; }
+  .space-inquire { font-size: 13px; font-weight: 700; color: var(--leaf); text-decoration: none; }
+  .space-inquire:hover { text-decoration: underline; }
+
+  /* ── Footer ──────────────────────────────────────── */
+  .footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.65);
+    padding: 52px 40px 32px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 28px;
+  }
+  .footer-logo { height: 36px; width: auto; object-fit: contain; margin-bottom: 14px; display: block; filter: brightness(0) invert(1); }
+  .footer-tagline { font-size: 13px; line-height: 1.6; max-width: 260px; margin-bottom: 20px; }
+  .footer-social { display: flex; gap: 10px; }
+  .social-btn {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: border-color 0.18s, background 0.18s;
+  }
+  .social-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); }
+  .social-btn svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.7); }
+  .footer-col-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 16px;
+  }
+  .footer-info { display: flex; flex-direction: column; gap: 8px; }
+  .footer-info span { font-size: 13px; }
+  .footer-info a { color: rgba(255,255,255,0.65); text-decoration: none; }
+  .footer-info a:hover { color: #fff; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.65); text-decoration: none; }
+  .footer-links a:hover { color: #fff; }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .mkt-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .nav { padding: 0 24px; gap: 20px; }
+    .nav-links { display: none; }
+    .hero { height: 80vh; min-height: 500px; }
+    .hero-content { padding: 0 24px 52px; }
+    .tabs-strip { padding: 0 24px; overflow-x: auto; }
+    .section { padding: 52px 24px; }
+    .vendor-grid { grid-template-columns: 1fr 1fr; }
+    .shops-grid { grid-template-columns: 1fr; }
+    .highlight-strip { padding: 40px 24px; }
+    .highlight-strip-inner { flex-direction: column; gap: 28px; }
+    .visit-grid { grid-template-columns: 1fr; }
+    .footer { padding: 40px 24px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .leasing-hero { padding: 60px 24px; }
+    .leasing-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .leasing-why { padding: 60px 24px; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .leasing-spaces { padding: 60px 24px; }
+    .spaces-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .vendor-grid { grid-template-columns: 1fr; }
+    .shops-grid { grid-template-columns: 1fr; }
+    .shop-card-photo { width: 130px; }
+    .mkt-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats { flex-wrap: wrap; }
+    .footer-top { grid-template-columns: 1fr; }
+    .hs-stats { gap: 24px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ─── Mockup Banner ──────────────────────────────────── -->
+<div class="mockup-banner">
+  <span>✦ Concept Mockup</span> — City Square Shopping Center
+</div>
+
+<!-- ─── Navigation ─────────────────────────────────────── -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <img src="photo/logo/logo2.jpg" alt="City Square Shopping Center">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#marketplace">Marketplace</a></li>
+    <li><a href="#eat">Restaurants</a></li>
+    <li><a href="#shops">Shops</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="#leasing">Leasing</a></li>
+  </ul>
+  <a href="https://maps.google.com/?q=1199+Dillingham+Blvd+Honolulu+HI" class="nav-cta" target="_blank">Get Directions</a>
+</nav>
+
+<!-- ─── Hero ───────────────────────────────────────────── -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="photo/landing_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">City Square · Kalihi, Hawaiʻi</div>
+    <h1 class="hero-title">Kalihi's #1<br>Food &amp; Shopping<br><em>Destination</em></h1>
+    <p class="hero-sub">Fresh produce, local eats, and everyday essentials — all under one roof in the heart of Honolulu.</p>
+    <div class="hero-actions">
+      <a href="#marketplace" class="btn-primary">Visit the Marketplace</a>
+      <a href="#eat" class="btn-outline">Explore Restaurants</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Shops &amp; Restaurants</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">Free</div>
+        <div class="stat-label">300 Parking Stalls</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">Daily</div>
+        <div class="stat-label">Marketplace Open 8am–4pm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Category Tabs ──────────────────────────────────── -->
+<div class="tabs-strip">
+  <div class="tabs-inner">
+    <a href="#" class="tab active">All</a>
+    <a href="#marketplace" class="tab">Marketplace</a>
+    <a href="#eat" class="tab">Restaurants</a>
+    <a href="#shops" class="tab">Shops &amp; Services</a>
+  </div>
+</div>
+
+<!-- ─── Marketplace Highlight Strip ───────────────────── -->
+<div class="highlight-strip" id="marketplace">
+  <div class="highlight-strip-inner">
+    <div class="hs-text">
+      <div class="hs-eyebrow">Indoor Grocery Market</div>
+      <h2 class="hs-title">Fresh Every Morning,<br><em>Right Here in Kalihi</em></h2>
+      <p class="hs-sub">Local farmers, fishermen, and vendors bring their best produce, seafood, and specialty goods to our indoor marketplace — every single day.</p>
+    </div>
+    <div class="hs-stats">
+      <div class="hs-stat">
+        <div class="hs-stat-num">20+</div>
+        <div class="hs-stat-label">Marketplace Vendors</div>
+      </div>
+      <div class="hs-stat">
+        <div class="hs-stat-num">8am</div>
+        <div class="hs-stat-label">Opens Daily</div>
+      </div>
+      <div class="hs-stat">
+        <div class="hs-stat-num">100%</div>
+        <div class="hs-stat-label">Solar Powered</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Marketplace Vendors ────────────────────────────── -->
+<section class="section mkt-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Shop the Market</div>
+      <h2 class="section-title">Marketplace Vendors</h2>
+      <p class="section-desc">Find fresh produce, seafood, meats, and specialty goods from our local vendors inside the marketplace.</p>
+    </div>
+    <div class="mkt-grid">
+
+      <div class="mkt-cat">
+        <img src="photo/market%20place/veggietable.jpg" alt="Fresh Produce" class="mkt-cat-photo">
+        <div class="mkt-cat-body">
+          <div class="mkt-cat-name">Fresh Produce</div>
+          <ul class="mkt-list">
+            <li><span>Farm Life</span><a href="tel:8083971991">(808) 397-1991</a></li>
+            <li><span>Island Green Produce</span><a href="tel:8084972219">(808) 497-2219</a></li>
+            <li><span>Marissa's Produce</span><a href="tel:8085205612">(808) 520-5612</a></li>
+          </ul>
+          <div class="mkt-more">+4 more vendors</div>
+        </div>
+      </div>
+
+      <div class="mkt-cat">
+        <img src="photo/market%20place/seafood.jpg" alt="Fresh Seafood" class="mkt-cat-photo">
+        <div class="mkt-cat-body">
+          <div class="mkt-cat-name">Seafood</div>
+          <ul class="mkt-list">
+            <li><span>Brian's Seafood Market</span><a href="tel:8085546872">(808) 554-6872</a></li>
+            <li><span>7 Sisters Market</span><a href="tel:8088001641">(808) 800-1641</a></li>
+            <li><span>Marivic Seafood &amp; Meats</span><a href="tel:8087418127">(808) 741-8127</a></li>
+          </ul>
+          <div class="mkt-more">+1 more vendor</div>
+        </div>
+      </div>
+
+      <div class="mkt-cat">
+        <img src="photo/market%20place/seafood.jpg" alt="Meat and More" class="mkt-cat-photo" style="object-position: right center;">
+        <div class="mkt-cat-body">
+          <div class="mkt-cat-name">Meat &amp; More</div>
+          <ul class="mkt-list">
+            <li><span>7 Sisters Market</span><a href="tel:8084458276">(808) 445-8276</a></li>
+            <li><span>Marivic Seafood &amp; Meats</span><a href="tel:8087418127">(808) 741-8127</a></li>
+            <li><span>Pinoy One</span><a href="tel:8083813235">(808) 381-3235</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mkt-cat">
+        <img src="photo/market%20place/knife.jpg" alt="Retail and Specialty" class="mkt-cat-photo" style="object-position: center top;">
+        <div class="mkt-cat-body">
+          <div class="mkt-cat-name">Retail &amp; Specialty</div>
+          <ul class="mkt-list">
+            <li><span>AFrames Tokyo</span><a href="tel:8086791655">(808) 679-1655</a></li>
+            <li><span>Ukay-Ukay</span><a href="tel:8082820121">(808) 282-0121</a></li>
+            <li><span>Pinoy One</span><a href="tel:8083813235">(808) 381-3235</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Restaurants ────────────────────────────────────── -->
+<section class="section" id="eat">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Ono Grinds</div>
+      <h2 class="section-title">Eat. Gather. Enjoy.</h2>
+      <p class="section-desc">From Japanese comfort food to Hawaiian classics, our restaurants bring the flavors of the world right here to Kalihi.</p>
+    </div>
+    <div class="vendor-grid">
+
+      <div class="vendor-card">
+        <img src="photo/market%20place/food1.jpg" alt="Chef's Ramen" class="vendor-photo">
+        <div class="vendor-body">
+          <div class="vendor-category">Japanese</div>
+          <div class="vendor-name">Chef's Ramen</div>
+          <div class="vendor-desc">Tonkotsu ramen, Japanese curry, and delicious comfort food with a local flare.</div>
+          <div class="cta-row">
+            <a href="tel:8088426660" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-menu">View Menu</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vendor-card">
+        <img src="photo/market%20place/youngs.jpg" alt="Young's Fish Market" class="vendor-photo">
+        <div class="vendor-body">
+          <div class="vendor-category">Hawaiian</div>
+          <div class="vendor-name">Young's Fish Market</div>
+          <div class="vendor-desc">Ono Hawaiian dishes — laulau, poke, and local-style plate lunches done right.</div>
+          <div class="cta-row">
+            <a href="tel:8088414885" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-menu">View Menu</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vendor-card">
+        <img src="photo/market%20place/kamehameha.jpg" alt="Kamehameha Bakery" class="vendor-photo" style="object-position: center top;">
+        <div class="vendor-body">
+          <div class="vendor-category">Bakery</div>
+          <div class="vendor-name">Kamehameha Bakery</div>
+          <div class="vendor-desc">Famous glazed poi and haupia malasadas — a Hawaiʻi institution since forever.</div>
+          <div class="cta-row">
+            <a href="tel:8088455831" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-menu">View Menu</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="see-all-wrap">
+      <a href="#" class="see-all-link">See all 14 restaurants →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Shops & Services ───────────────────────────────── -->
+<section class="section" id="shops" style="background: var(--gray-1);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">One-Stop Shopping</div>
+      <h2 class="section-title">Shops &amp; Services</h2>
+      <p class="section-desc">From haircuts to health, e-bikes to insurance — everything your neighborhood needs is right here at City Square.</p>
+    </div>
+    <div class="shops-grid">
+
+      <div class="shop-card">
+        <img src="photo/market%20place/ebikes.jpg" alt="Aloha E-Bikes" class="shop-card-photo">
+        <div class="shop-card-body">
+          <div class="shop-cat">Retail</div>
+          <div class="shop-name">Aloha E-Bikes</div>
+          <p class="shop-desc">Electric bikes, scooters, and gear — explore Honolulu the easy way. Sales, rentals, and repairs available.</p>
+          <a href="#" class="shop-learn">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="photo/market%20place/salon.jpg" alt="Cloud 9 Salon & Spa" class="shop-card-photo">
+        <div class="shop-card-body">
+          <div class="shop-cat">Beauty</div>
+          <div class="shop-name">Cloud 9 Salon &amp; Spa</div>
+          <p class="shop-desc">Full-service hair salon and spa offering cuts, color, treatments, and relaxing spa services for the whole family.</p>
+          <a href="#" class="shop-learn">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="photo/market%20place/store1.jpg" alt="Kalihi Pet Center" class="shop-card-photo" style="object-position: center top;">
+        <div class="shop-card-body">
+          <div class="shop-cat">Pets</div>
+          <div class="shop-name">Kalihi Pet Center</div>
+          <p class="shop-desc">Your neighborhood pet shop for food, supplies, accessories, and advice — keeping your furry ohana happy and healthy.</p>
+          <a href="#" class="shop-learn">Learn More →</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="see-all-wrap">
+      <a href="#" class="see-all-link">See all 20+ shops &amp; services →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Visit ──────────────────────────────────────────── -->
+<section class="section visit-section" id="visit">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Find Us</div>
+      <h2 class="section-title">Visit City Square</h2>
+      <p class="section-desc">Two convenient locations in the heart of Kalihi with ample free parking at both.</p>
+    </div>
+
+    <div class="visit-joke">
+      <p class="vj-setup">Dillingham's been under construction since approximately the Jurassic period.</p>
+      <p class="vj-punchline">The cones no move. Our fresh produce did — every morning.</p>
+      <p class="vj-tag">See you folks there.</p>
+    </div>
+
+    <div class="visit-grid">
+      <div>
+        <div class="loc-block">
+          <div class="loc-label">Main Location</div>
+          <div class="loc-address">1199 Dillingham Blvd<br>Honolulu, HI 96817</div>
+          <table class="hours-tbl">
+            <tr><td>Marketplace</td><td>Mon – Sun · 8:00 am – 4:00 pm</td></tr>
+            <tr><td>Restaurants</td><td>Varies by tenant</td></tr>
+            <tr><td>Shops &amp; Services</td><td>Varies by tenant</td></tr>
+          </table>
+          <div class="loc-meta">
+            <span>300 free parking stalls</span>
+            <span>100% solar powered</span>
+            <span>Management: <a href="tel:8088326999">(808) 832-6999</a></span>
+          </div>
+          <a href="https://maps.google.com/?q=1199+Dillingham+Blvd+Honolulu+HI" class="dir-link" target="_blank">→ Open in Google Maps</a>
+        </div>
+
+        <hr class="loc-divider">
+
+        <div class="loc-block">
+          <div class="loc-label annex">Annex Location</div>
+          <div class="loc-address">1287 Kalani St<br>Honolulu, HI 96817</div>
+          <div class="loc-meta">
+            <span>Professional offices &amp; services</span>
+            <span>SMARTraining Hawaii · Poncho's Solar · LN's Hair Salon</span>
+          </div>
+          <a href="https://maps.google.com/?q=1287+Kalani+St+Honolulu+HI" class="dir-link" target="_blank">→ Open in Google Maps</a>
+        </div>
+      </div>
+
+      <div class="map-placeholder">
+        <div class="map-pin-icon"></div>
+        <div class="map-label-text">City Square Shopping Center</div>
+        <div class="map-sub-text">1199 Dillingham Blvd · Honolulu, HI 96817</div>
+        <a href="https://maps.google.com/?q=1199+Dillingham+Blvd+Honolulu+HI" class="map-open-link" target="_blank">Open in Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Leasing: Intro + Contact ──────────────────────── -->
+<section id="leasing" class="leasing-hero">
+  <div class="leasing-hero-inner">
+    <div>
+      <div class="eyebrow">Leasing Opportunities</div>
+      <h2 class="section-title">Grow Your Business<br>at City Square</h2>
+      <p class="section-desc">Join a thriving community of local businesses in the heart of Kalihi. With 300 free parking stalls, a built-in daily marketplace customer base, and 100% solar-powered operations, City Square is the right address for your business.</p>
+      <div class="leasing-highlights">
+        <div class="leasing-hl">
+          <div class="leasing-hl-num">300</div>
+          <div class="leasing-hl-label">Free Parking Stalls</div>
+        </div>
+        <div class="leasing-hl">
+          <div class="leasing-hl-num">40+</div>
+          <div class="leasing-hl-label">Established Tenants</div>
+        </div>
+        <div class="leasing-hl">
+          <div class="leasing-hl-num">Daily</div>
+          <div class="leasing-hl-label">Marketplace Foot Traffic</div>
+        </div>
+        <div class="leasing-hl">
+          <div class="leasing-hl-num">2</div>
+          <div class="leasing-hl-label">Locations Available</div>
+        </div>
+      </div>
+    </div>
+    <div class="leasing-contact-card">
+      <div class="leasing-contact-title">Contact Our Leasing Team</div>
+      <div class="leasing-contact-sub">City Square Management Services</div>
+      <div class="leasing-contact-rows">
+        <div class="leasing-contact-row">
+          <div class="lcr-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="lcr-text">
+            <strong>Phone</strong>
+            <a href="tel:8088326999">(808) 832-6999</a>
+          </div>
+        </div>
+        <div class="leasing-contact-row">
+          <div class="lcr-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="lcr-text">
+            <strong>Email</strong>
+            <a href="mailto:management@citysquarehawaii.com">management@citysquarehawaii.com</a>
+          </div>
+        </div>
+        <div class="leasing-contact-row">
+          <div class="lcr-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="lcr-text">
+            <strong>Office Address</strong>
+            1287 Kalani Street, Suite 206<br>Honolulu, Hawaii 96817
+          </div>
+        </div>
+        <div class="leasing-contact-row">
+          <div class="lcr-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="lcr-text">
+            <strong>Office Hours</strong>
+            Monday – Friday · 8:00 am – 5:00 pm
+          </div>
+        </div>
+      </div>
+      <a href="mailto:management@citysquarehawaii.com" class="leasing-cta-btn">Inquire About Leasing</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Leasing: Why City Square ───────────────────────── -->
+<section class="leasing-why">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Why City Square</div>
+      <h2 class="section-title">A Community That Drives Business</h2>
+      <p class="section-desc">City Square isn't just a shopping center — it's a neighborhood institution with loyal daily visitors and a diverse, established tenant mix.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="why-title">Built-In Daily Foot Traffic</div>
+        <div class="why-desc">Our indoor marketplace draws hundreds of shoppers every morning, seven days a week — giving neighboring tenants consistent daily exposure.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="why-title">300 Free Parking Stalls</div>
+        <div class="why-desc">Ample, free, at-grade parking is one of the biggest advantages for Kalihi — customers can visit multiple tenants in a single convenient trip.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <div class="why-title">100% Solar Powered</div>
+        <div class="why-desc">City Square's solar installation keeps operating costs low and demonstrates a commitment to sustainability that resonates with today's customers.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="why-title">Established Neighborhood Anchor</div>
+        <div class="why-desc">A family shopping tradition for decades in the heart of Kalihi — City Square has deep community roots and a loyal, returning customer base.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Leasing: Available Spaces ─────────────────────── -->
+<section class="leasing-spaces">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Available Spaces</div>
+      <h2 class="section-title">Find Your Space</h2>
+      <p class="section-desc">We offer a range of lease options across our main location and Annex. Contact us to discuss current availability and rates.</p>
+    </div>
+    <div class="spaces-grid">
+
+      <div class="space-card">
+        <div class="space-card-header retail"></div>
+        <div class="space-card-body">
+          <span class="space-type-badge retail">Retail Storefront</span>
+          <div class="space-name">Street-Facing Retail Units</div>
+          <div class="space-sqft">450 – 2,200 sq ft · 1199 Dillingham Blvd</div>
+          <p class="space-desc">High-visibility storefronts along the main shopping center strip with direct parking lot frontage. Ideal for restaurants, retail shops, salons, and service businesses.</p>
+          <ul class="space-features">
+            <li>Direct street and parking lot frontage</li>
+            <li>Signage opportunities on unit facade</li>
+            <li>Flexible unit configurations available</li>
+            <li>Adjacent to 14 active restaurants and services</li>
+            <li>NNN and gross lease options</li>
+          </ul>
+        </div>
+        <div class="space-card-footer">
+          <span class="space-avail open">Units Available</span>
+          <a href="mailto:management@citysquarehawaii.com" class="space-inquire">Inquire →</a>
+        </div>
+      </div>
+
+      <div class="space-card">
+        <div class="space-card-header market"></div>
+        <div class="space-card-body">
+          <span class="space-type-badge market">Marketplace Vendor</span>
+          <div class="space-name">Indoor Marketplace Stalls</div>
+          <div class="space-sqft">80 – 300 sq ft · Main Marketplace</div>
+          <p class="space-desc">Join our thriving indoor farmers market. Climate-controlled stalls open to hundreds of daily shoppers. Well-suited for produce vendors, seafood sellers, specialty food, and retail goods.</p>
+          <ul class="space-features">
+            <li>Fully air-conditioned indoor environment</li>
+            <li>Open 7 days a week, 8 am – 4 pm</li>
+            <li>Established daily customer traffic</li>
+            <li>Shared cold storage available</li>
+            <li>Month-to-month and annual leases</li>
+          </ul>
+        </div>
+        <div class="space-card-footer">
+          <span class="space-avail limited">Limited Availability</span>
+          <a href="mailto:management@citysquarehawaii.com" class="space-inquire">Inquire →</a>
+        </div>
+      </div>
+
+      <div class="space-card">
+        <div class="space-card-header office"></div>
+        <div class="space-card-body">
+          <span class="space-type-badge office">Office Suite</span>
+          <div class="space-name">Professional Office Suites</div>
+          <div class="space-sqft">200 – 800 sq ft · 1287 Kalani St (Annex)</div>
+          <p class="space-desc">Quiet, professional office suites at the Annex location — ideal for CPAs, attorneys, consultants, healthcare providers, and other professional services.</p>
+          <ul class="space-features">
+            <li>Private suite configurations</li>
+            <li>Shared lobby and common areas</li>
+            <li>On-site parking included</li>
+            <li>Professional business neighbors</li>
+            <li>Gross lease with utilities included</li>
+          </ul>
+        </div>
+        <div class="space-card-footer">
+          <span class="space-avail open">Units Available</span>
+          <a href="mailto:management@citysquarehawaii.com" class="space-inquire">Inquire →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ─────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <img src="photo/logo/logo2.jpg" alt="City Square" class="footer-logo">
+        <p class="footer-tagline">A neighborhood institution in Kalihi — fresh food, local shops, and community at the heart of Honolulu.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Hours</div>
+        <div class="footer-info">
+          <span>Marketplace: Mon–Sun 8am–4pm</span>
+          <span>Restaurants: Varies by tenant</span>
+          <span>Shops: Varies by tenant</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-info">
+          <span>1199 Dillingham Blvd<br>Honolulu, HI 96817</span>
+          <span><a href="tel:8088326999">(808) 832-6999</a></span>
+          <span><a href="mailto:management@citysquarehawaii.com">management@citysquarehawaii.com</a></span>
+          <span style="margin-top:4px;"><a href="#leasing">Leasing Inquiries →</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 City Square Shopping Center · Honolulu, HI</span>
+      <span>Concept Mockup</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

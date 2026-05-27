@@ -93,7 +93,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    height: 74px;
+    height: 96px;
     box-shadow: 0 1px 0 var(--border);
   }
   .nav-logo {
@@ -102,7 +102,7 @@
     text-decoration: none;
   }
   .nav-logo img {
-    height: 54px;
+    height: 77px;
     width: auto;
     display: block;
   }
@@ -1290,20 +1290,20 @@
   }
   .mvendor-list { list-style: none; }
   .mvendor-list li {
-    font-size: 12.5px;
-    padding: 6px 0;
+    font-size: 15px;
+    padding: 9px 0;
     border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 6px;
-    line-height: 1.35;
+    gap: 8px;
+    line-height: 1.4;
   }
   .mvendor-list li:last-child { border-bottom: none; padding-bottom: 0; }
-  .mvendor-list li span { flex: 1; }
+  .mvendor-list li span { flex: 1; font-weight: 500; }
   .mvendor-list a {
     color: var(--leaf);
-    font-size: 11px;
+    font-size: 13.5px;
     font-weight: 600;
     text-decoration: none;
     white-space: nowrap;
@@ -1362,6 +1362,7 @@
     .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
   }
 </style>
+<script>history.scrollRestoration = 'manual';</script>
 </head>
 <body>
 
@@ -1527,7 +1528,6 @@
     <div class="market-right-inner">
       <div class="market-vendor-grid">
         <div class="mvendor-cat">
-          <img src="photo/market%20place/veggietable.jpg" alt="Fresh Produce" class="mvendor-photo">
           <div class="mvendor-cat-name">Fresh Produce</div>
           <ul class="mvendor-list">
             <li><span>Farm Life</span><a href="tel:8083971991">(808) 397-1991</a></li>
@@ -1537,17 +1537,15 @@
           <div class="mvendor-more">+4 more vendors</div>
         </div>
         <div class="mvendor-cat">
-          <img src="photo/market%20place/seafood.jpg" alt="Fresh Seafood" class="mvendor-photo">
           <div class="mvendor-cat-name">Seafood</div>
           <ul class="mvendor-list">
-            <li><span>Brian's Seafood Market</span><a href="tel:8085546872">(808) 554-6872</a></li>
             <li><span>7 Sisters Market</span><a href="tel:8088001641">(808) 800-1641</a></li>
+            <li><span>Brian's Seafood Market</span><a href="tel:8085546872">(808) 554-6872</a></li>
             <li><span>Marivic Seafood &amp; Meats</span><a href="tel:8087418127">(808) 741-8127</a></li>
           </ul>
           <div class="mvendor-more">+1 more vendor</div>
         </div>
         <div class="mvendor-cat">
-          <img src="photo/market%20place/seafood.jpg" alt="Meat and More" class="mvendor-photo" style="object-position: right center;">
           <div class="mvendor-cat-name">Meat &amp; More</div>
           <ul class="mvendor-list">
             <li><span>7 Sisters Market</span><a href="tel:8084458276">(808) 445-8276</a></li>
@@ -1556,12 +1554,11 @@
           </ul>
         </div>
         <div class="mvendor-cat">
-          <img src="photo/market%20place/knife.jpg" alt="Retail and Specialty" class="mvendor-photo" style="object-position: center top;">
           <div class="mvendor-cat-name">Retail &amp; Specialty</div>
           <ul class="mvendor-list">
             <li><span>AFrames Tokyo</span><a href="tel:8086791655">(808) 679-1655</a></li>
-            <li><span>Ukay-Ukay</span><a href="tel:8082820121">(808) 282-0121</a></li>
             <li><span>Pinoy One</span><a href="tel:8083813235">(808) 381-3235</a></li>
+            <li><span>Ukay-Ukay</span><a href="tel:8082820121">(808) 282-0121</a></li>
           </ul>
         </div>
       </div>
@@ -1577,27 +1574,16 @@
       <h2 class="section-title">Eat. Gather. Enjoy.</h2>
       <p class="section-desc">From Japanese comfort food to Hawaiian classics, our restaurants bring the flavors of the world right here to Kalihi.</p>
     </div>
-    <div class="restaurant-grid">
+    <div class="market-vendor-grid">
 
-      <div class="r-card">
-        <img src="photo/market%20place/food1.jpg" alt="Chef's Ramen" class="r-photo">
-        <div class="r-name">Chef's Ramen</div>
-        <div class="r-desc">Tonkotsu ramen, Japanese curry, and delicious comfort food with a local flare.</div>
-        <a href="tel:8088426660" class="r-phone">(808) 842-6660</a>
-      </div>
-
-      <div class="r-card">
-        <img src="photo/market%20place/youngs.jpg" alt="Young's Fish Market" class="r-photo">
-        <div class="r-name">Young's Fish Market</div>
-        <div class="r-desc">Ono Hawaiian dishes — laulau, poke, and local-style plate lunches done right.</div>
-        <a href="tel:8088414885" class="r-phone">(808) 841-4885</a>
-      </div>
-
-      <div class="r-card">
-        <img src="photo/market%20place/kamehameha.jpg" alt="Kamehameha Bakery" class="r-photo" style="object-position: center top;">
-        <div class="r-name">Kamehameha Bakery</div>
-        <div class="r-desc">Famous glazed poi and haupia malasadas — a Hawaiʻi institution since forever.</div>
-        <a href="tel:8088455831" class="r-phone">(808) 845-5831</a>
+      <div class="mvendor-cat">
+        <div class="mvendor-cat-name">Restaurants</div>
+        <ul class="mvendor-list">
+          <li><span>Chef's Ramen</span><a href="tel:8088426660">(808) 842-6660</a></li>
+          <li><span>Kamehameha Bakery</span><a href="tel:8088455831">(808) 845-5831</a></li>
+          <li><span>Young's Fish Market</span><a href="tel:8088414885">(808) 841-4885</a></li>
+        </ul>
+        <div class="mvendor-more">+11 more restaurants</div>
       </div>
 
     </div>
@@ -1613,20 +1599,18 @@
       <h2 class="section-title">Shops &amp; Services</h2>
       <p class="section-desc">From haircuts to health, e-bikes to insurance — everything your neighborhood needs is right here at City Square.</p>
     </div>
-    <div class="shops-photo-strip">
-      <div class="shop-photo-card">
-        <img src="photo/market%20place/salon.jpg" alt="City Square Shopping Center strip">
-        <div class="shop-photo-label">Beauty &amp; Wellness</div>
+    <div class="market-vendor-grid">
+
+      <div class="mvendor-cat">
+        <div class="mvendor-cat-name">Shops &amp; Services</div>
+        <ul class="mvendor-list">
+          <li><span>Aloha E-Bikes</span><a href="tel:8083972453">(808) 397-2453</a></li>
+          <li><span>Cloud 9 Salon &amp; Spa</span><a href="tel:8084848822">(808) 484-8822</a></li>
+          <li><span>Kalihi Pet Center</span><a href="tel:8088474434">(808) 847-4434</a></li>
+        </ul>
+        <div class="mvendor-more">+17 more shops &amp; services</div>
       </div>
-      <div class="shop-photo-card">
-        <img src="photo/market%20place/ebikes.jpg" alt="Aloha E-Bikes">
-        <div class="shop-photo-label">Retail &amp; Recreation</div>
-      </div>
-    </div>
-    <div class="shops-grid">
-      <div class="shop-chip"><div class="chip-cat">Retail</div><div class="chip-name">Aloha E-Bikes</div></div>
-      <div class="shop-chip"><div class="chip-cat">Beauty</div><div class="chip-name">Cloud 9 Salon &amp; Spa</div></div>
-      <div class="shop-chip"><div class="chip-cat">Pets</div><div class="chip-name">Kalihi Pet Center</div></div>
+
     </div>
     <div class="section-see-all"><a href="#" class="see-all-link">See all 20+ shops &amp; services →</a></div>
   </div>

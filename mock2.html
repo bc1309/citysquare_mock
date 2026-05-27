@@ -58,14 +58,14 @@
     z-index: 100;
     background: var(--white);
     border-bottom: 1px solid var(--border);
-    height: 100px;
+    height: 180px;
     display: flex;
     align-items: center;
     padding: 0 40px;
     gap: 40px;
   }
   .nav-logo img {
-    height: 84px;
+    height: 160px;
     width: auto;
     object-fit: contain;
     display: block;
@@ -917,6 +917,39 @@
     gap: 8px;
   }
 
+  /* ── Construction banner ─────────────────────────── */
+  .construction-banner {
+    background: #fffbea;
+    border-top: 1px solid #f0d96b;
+    border-bottom: 3px solid #f0d96b;
+    padding: 24px 40px 20px;
+    text-align: center;
+  }
+  .cb-setup {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #9a7c3a;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+  .cb-punchline {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--leaf-deep);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .cb-tag {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--sun);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
   /* ── Responsive ──────────────────────────────────── */
   @media (max-width: 1024px) {
     .vendor-photo { width: 160px; }
@@ -1040,6 +1073,13 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- ─── Construction Notice ──────────────────────────────── -->
+<div class="construction-banner">
+  <p class="cb-setup">Dillingham's been under construction since approximately the Jurassic period.</p>
+  <p class="cb-punchline">The cones no move. Our fresh produce did — every morning.</p>
+  <p class="cb-tag">See you folks there.</p>
 </div>
 
 <!-- ─── Marketplace Vendors ────────────────────────────── -->

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Square Shopping Center — Redesign Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --paper: #faf6ef;
+    --paper-2: #f1e9db;
+    --sun: #e8762a;
+    --sun-deep: #c45614;
+    --leaf: #2f5d3a;
+    --leaf-deep: #1d3d24;
+    --coral: #d94f3a;
+    --ocean: #1f4d5c;
+    --gold: #d4a437;
+    --border: rgba(26, 20, 16, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter Tight', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+
+  .display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+  .display-italic { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; }
+
+  /* Mockup banner */
+  .mockup-banner {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 24px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .mockup-banner span { color: var(--sun); }
+
+  /* Top bar */
+  .topbar {
+    background: var(--paper-2);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+  .topbar-left { display: flex; gap: 24px; align-items: center; }
+  .topbar-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 500;
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--leaf);
+    box-shadow: 0 0 0 4px rgba(47, 93, 58, 0.18);
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(47, 93, 58, 0.18); }
+    50% { box-shadow: 0 0 0 7px rgba(47, 93, 58, 0.05); }
+  }
+  .topbar-right { display: flex; gap: 20px; }
+  .topbar a { color: var(--ink); text-decoration: none; opacity: 0.7; }
+  .topbar a:hover { opacity: 1; }
+
+  /* Nav */
+  nav.main-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 40px;
+    border-bottom: 1px solid var(--border);
+    background: var(--paper);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; color: var(--ink);
+  }
+  .logo-mark {
+    width: 46px; height: 46px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .logo-text { line-height: 1.05; }
+  .logo-text .name { font-family: 'Fraunces', serif; font-weight: 700; font-size: 19px; letter-spacing: -0.01em; }
+  .logo-text .sub { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.6; }
+
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: var(--ink); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    position: relative;
+    padding: 4px 0;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: -2px;
+    width: 0; height: 2px; background: var(--sun);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--ink); color: var(--paper);
+    padding: 10px 20px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--sun-deep); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: 64px 40px 80px;
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 20%, rgba(232, 118, 42, 0.12), transparent 60%),
+      radial-gradient(ellipse 60% 70% at 10% 90%, rgba(47, 93, 58, 0.08), transparent 60%),
+      var(--paper);
+    overflow: hidden;
+  }
+  .hero-grid {
+    max-width: 1320px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sun-deep); font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .eyebrow::before {
+    content: ''; width: 28px; height: 1.5px; background: var(--sun-deep);
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 6.5vw, 88px);
+    line-height: 0.96;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--sun-deep);
+  }
+  .hero h1 .underline {
+    position: relative; display: inline-block;
+  }
+  .hero h1 .underline::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0.05em;
+    height: 0.16em; background: var(--gold); opacity: 0.55;
+    z-index: -1;
+  }
+  .hero-lede {
+    font-size: 19px; line-height: 1.5;
+    max-width: 520px;
+    color: rgba(26, 20, 16, 0.78);
+    margin-bottom: 36px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 26px; border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary {
+    background: var(--ink); color: var(--paper);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26, 20, 16, 0.25); }
+  .btn-ghost {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+  .btn .arrow {
+    width: 16px; height: 16px;
+    transition: transform 0.2s;
+  }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  .hero-meta {
+    display: flex; gap: 28px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .hero-meta-item .num {
+    font-family: 'Fraunces', serif;
+    font-size: 32px; font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .hero-meta-item .label {
+    font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.65;
+    margin-top: 6px;
+  }
+
+  /* Hero visual collage */
+  .hero-visual {
+    position: relative;
+    height: 560px;
+  }
+  .collage-img {
+    position: absolute;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(26, 20, 16, 0.18);
+  }
+  .collage-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.18));
+  }
+  .img-1 {
+    top: 0; left: 8%; width: 56%; height: 65%;
+    background: linear-gradient(135deg, #f4a261 0%, #e76f51 60%, #c45614 100%);
+    transform: rotate(-2deg);
+  }
+  .img-1::before {
+    content: '🥭 🍍 🌶️'; position: absolute; inset: 0;
+    display: grid; place-items: center; font-size: 64px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+  }
+  .img-2 {
+    top: 22%; right: 0; width: 52%; height: 50%;
+    background: linear-gradient(160deg, #2f5d3a 0%, #1d3d24 100%);
+    transform: rotate(3deg);
+  }
+  .img-2::before {
+    content: '🥬'; position: absolute; inset: 0;
+    display: grid; place-items: center; font-size: 96px;
+  }
+  .img-3 {
+    bottom: 0; left: 0; width: 42%; height: 40%;
+    background: linear-gradient(150deg, #1f4d5c 0%, #0d2a35 100%);
+    transform: rotate(-4deg);
+  }
+  .img-3::before {
+    content: '🐟'; position: absolute; inset: 0;
+    display: grid; place-items: center; font-size: 88px;
+  }
+  .sticker {
+    position: absolute;
+    background: var(--ink); color: var(--paper);
+    border-radius: 50%;
+    width: 130px; height: 130px;
+    display: grid; place-items: center;
+    text-align: center;
+    transform: rotate(-12deg);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    line-height: 1.15;
+    padding: 10px;
+    animation: wobble 6s ease-in-out infinite;
+  }
+  @keyframes wobble {
+    0%, 100% { transform: rotate(-12deg); }
+    50% { transform: rotate(-8deg); }
+  }
+  .sticker .big {
+    font-weight: 800; font-size: 22px; font-style: italic;
+    color: var(--sun); display: block; margin-bottom: 2px;
+  }
+  .sticker-1 { top: 4%; right: 4%; }
+
+  /* Section: Open Now */
+  .open-now {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 40px;
+    overflow: hidden;
+    position: relative;
+  }
+  .marquee {
+    display: flex; gap: 48px;
+    animation: scroll 40s linear infinite;
+    white-space: nowrap;
+    align-items: center;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-item {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Fraunces', serif;
+    font-size: 22px; font-weight: 500;
+    font-style: italic;
+  }
+  .marquee-item .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--sun);
+  }
+  .marquee-item .tag {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 11px; font-style: normal;
+    background: rgba(232, 118, 42, 0.18);
+    color: var(--sun);
+    padding: 3px 10px; border-radius: 999px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Sections */
+  section.content {
+    padding: 96px 40px;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  .section-head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px;
+    gap: 40px;
+  }
+  .section-head h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    max-width: 720px;
+  }
+  .section-head h2 em { font-style: italic; color: var(--leaf); font-weight: 500; }
+  .section-head p {
+    max-width: 360px;
+    font-size: 16px;
+    color: rgba(26, 20, 16, 0.7);
+  }
+
+  /* Categories */
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .cat-card {
+    background: var(--paper-2);
+    border-radius: 12px;
+    padding: 32px 24px;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex; flex-direction: column;
+    gap: 20px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+  }
+  .cat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(26, 20, 16, 0.12);
+  }
+  .cat-icon {
+    font-size: 36px; line-height: 1;
+  }
+  .cat-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px; font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .cat-card .count {
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    opacity: 0.55;
+    margin-top: auto;
+  }
+  .cat-card .arrow-corner {
+    position: absolute; top: 24px; right: 24px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--paper);
+    display: grid; place-items: center;
+    font-size: 14px;
+    transition: transform 0.3s;
+  }
+  .cat-card:hover .arrow-corner { transform: rotate(-45deg); }
+  .cat-card.featured { background: var(--leaf); color: var(--paper); }
+  .cat-card.featured .count { opacity: 0.75; }
+  .cat-card.featured .arrow-corner { background: var(--leaf-deep); color: var(--paper); }
+
+  /* Marketplace feature section */
+  .marketplace-feature {
+    background: linear-gradient(160deg, #f1e9db 0%, #e8dcc4 100%);
+    padding: 96px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .marketplace-grid {
+    max-width: 1320px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .marketplace-grid .visual {
+    position: relative; height: 480px;
+  }
+  .vendor-card {
+    position: absolute;
+    background: var(--paper);
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: 0 12px 28px rgba(26, 20, 16, 0.12);
+    width: 240px;
+    display: flex; gap: 12px; align-items: center;
+  }
+  .vendor-card .vendor-img {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--paper-2);
+    display: grid; place-items: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .vendor-card .vendor-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600; font-size: 16px;
+    line-height: 1.1;
+  }
+  .vendor-card .vendor-tag {
+    font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; opacity: 0.6;
+    margin-top: 4px;
+  }
+  .vc-1 { top: 8%; left: 0; transform: rotate(-3deg); }
+  .vc-2 { top: 38%; right: 8%; transform: rotate(2deg); }
+  .vc-3 { bottom: 12%; left: 12%; transform: rotate(-1deg); }
+  .vc-4 { bottom: 0; right: 0; transform: rotate(3deg); background: var(--sun); color: var(--paper); }
+  .vc-4 .vendor-img { background: var(--sun-deep); }
+
+  .marketplace-feature h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1;
+    margin-bottom: 24px;
+    letter-spacing: -0.03em;
+  }
+  .marketplace-feature h2 em { font-style: italic; color: var(--coral); font-weight: 500; }
+  .marketplace-feature p {
+    font-size: 17px; line-height: 1.6;
+    margin-bottom: 32px;
+    color: rgba(26, 20, 16, 0.78);
+    max-width: 480px;
+  }
+  .marketplace-stats {
+    display: flex; gap: 32px;
+    margin-bottom: 36px;
+  }
+  .ms-item .ms-num {
+    font-family: 'Fraunces', serif;
+    font-size: 40px; font-weight: 700;
+    color: var(--leaf-deep);
+    line-height: 1;
+  }
+  .ms-item .ms-label {
+    font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.6;
+    margin-top: 8px;
+  }
+
+  /* Visit / Map section */
+  .visit {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 96px 40px;
+  }
+  .visit-grid {
+    max-width: 1320px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 64px;
+  }
+  .visit h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+  .visit h2 em { font-style: italic; color: var(--sun); font-weight: 500; }
+  .info-row {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(250, 246, 239, 0.12);
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 24px;
+  }
+  .info-row .info-label {
+    font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; opacity: 0.55;
+    flex-shrink: 0;
+    min-width: 110px;
+  }
+  .info-row .info-value {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    text-align: right;
+  }
+  .map-mock {
+    background: linear-gradient(135deg, #2a4a3a 0%, #1d3d24 100%);
+    border-radius: 12px;
+    height: 100%;
+    min-height: 420px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(250, 246, 239, 0.08);
+  }
+  .map-mock::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(250, 246, 239, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(250, 246, 239, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .map-pin {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px;
+  }
+  .map-pin .pin-dot {
+    width: 24px; height: 24px;
+    background: var(--sun);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 8px rgba(232, 118, 42, 0.25),
+      0 0 0 18px rgba(232, 118, 42, 0.12);
+    animation: pulse-pin 2s infinite;
+  }
+  @keyframes pulse-pin {
+    0%, 100% { box-shadow: 0 0 0 8px rgba(232, 118, 42, 0.25), 0 0 0 18px rgba(232, 118, 42, 0.12); }
+    50% { box-shadow: 0 0 0 12px rgba(232, 118, 42, 0.3), 0 0 0 28px rgba(232, 118, 42, 0.06); }
+  }
+  .map-pin .pin-label {
+    background: var(--paper); color: var(--ink);
+    padding: 8px 14px; border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .map-features {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .map-feature {
+    background: rgba(250, 246, 239, 0.92);
+    color: var(--ink);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px;
+    backdrop-filter: blur(8px);
+    width: fit-content;
+  }
+  .map-feature .check {
+    width: 16px; height: 16px;
+    background: var(--leaf);
+    color: var(--paper);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 10px;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--paper-2);
+    padding: 64px 40px 32px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-grid {
+    max-width: 1320px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-brand .display {
+    font-size: 28px; line-height: 1;
+    margin-bottom: 16px;
+  }
+  .footer-brand p {
+    font-size: 14px; opacity: 0.7; max-width: 280px;
+  }
+  .footer-col h4 {
+    font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.55;
+  }
+  .footer-col a {
+    display: block;
+    color: var(--ink); text-decoration: none;
+    font-size: 14px;
+    padding: 5px 0;
+    opacity: 0.85;
+  }
+  .footer-col a:hover { opacity: 1; color: var(--sun-deep); }
+  .footer-bottom {
+    max-width: 1320px; margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    font-size: 13px; opacity: 0.6;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid, .marketplace-grid, .visit-grid, .footer-grid { grid-template-columns: 1fr; }
+    .categories { grid-template-columns: repeat(2, 1fr); }
+    .hero-visual { height: 400px; }
+    .section-head { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-banner"><span>● Concept Mockup</span> &nbsp; City Square Shopping Center — Homepage Redesign</div>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-status"><span class="status-dot"></span>Open Now · Marketplace closes at 4 PM</div>
+  </div>
+  <div class="topbar-right">
+    <a href="#">English</a>
+    <a href="#">繁體中文</a>
+    <a href="#">Tagalog</a>
+    <a href="#">日本語</a>
+  </div>
+</div>
+
+<nav class="main-nav">
+  <a href="#" class="logo">
+    <div class="logo-mark">CS</div>
+    <div class="logo-text">
+      <div class="name">City Square</div>
+      <div class="sub">Shopping Center · Kalihi</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#">Eat</a>
+    <a href="#">Marketplace</a>
+    <a href="#">Shops & Services</a>
+    <a href="#">Visit</a>
+    <a href="#">Events</a>
+    <a href="#" class="nav-cta">Lease Space →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Center of Hawai'i's Food Universe</div>
+      <h1>
+        Fresh fish,<br>
+        <em>family recipes,</em><br>
+        and <span class="underline">free parking</span>.
+      </h1>
+      <p class="hero-lede">
+        A Kalihi tradition since 1976. Forty-plus restaurants, shops, and marketplace vendors under one roof — plus the easiest parking on Dillingham.
+      </p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-primary">
+          What's open now
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+        </a>
+        <a href="#" class="btn btn-ghost">
+          Get directions
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="num">40+</div>
+          <div class="label">Tenants</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num">300</div>
+          <div class="label">Free Stalls</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num">100%</div>
+          <div class="label">Solar Powered</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="collage-img img-1"></div>
+      <div class="collage-img img-2"></div>
+      <div class="collage-img img-3"></div>
+      <div class="sticker sticker-1">
+        <div>
+          <span class="big">Open</span>
+          7 days<br>a week
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="open-now">
+  <div class="marquee">
+    <div class="marquee-item"><span class="dot"></span>City Square Papaya Salad <span class="tag">Open</span></div>
+    <div class="marquee-item"><span class="dot"></span>Chuck E. Cheese <span class="tag">Open</span></div>
+    <div class="marquee-item"><span class="dot"></span>Indoor Marketplace <span class="tag">Open · til 4pm</span></div>
+    <div class="marquee-item"><span class="dot"></span>Fresh Catch Seafood <span class="tag">New</span></div>
+    <div class="marquee-item"><span class="dot"></span>Ohana Chiropractic <span class="tag">Open</span></div>
+    <div class="marquee-item"><span class="dot"></span>Island Pet Shop <span class="tag">Open</span></div>
+    <div class="marquee-item"><span class="dot"></span>City Square Papaya Salad <span class="tag">Open</span></div>
+    <div class="marquee-item"><span class="dot"></span>Chuck E. Cheese <span class="tag">Open</span></div>
+    <div class="marquee-item"><span class="dot"></span>Indoor Marketplace <span class="tag">Open · til 4pm</span></div>
+    <div class="marquee-item"><span class="dot"></span>Fresh Catch Seafood <span class="tag">New</span></div>
+    <div class="marquee-item"><span class="dot"></span>Ohana Chiropractic <span class="tag">Open</span></div>
+    <div class="marquee-item"><span class="dot"></span>Island Pet Shop <span class="tag">Open</span></div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="section-head">
+    <h2>Browse <em>by what you're hungry for.</em></h2>
+    <p>From breakfast loco moco to weekend pho, fresh ahi to Asian groceries — find it without circling the building.</p>
+  </div>
+  <div class="categories">
+    <a href="#" class="cat-card featured">
+      <div class="cat-icon">🍜</div>
+      <h3>Restaurants<br>& Cafés</h3>
+      <div class="count">18 tenants</div>
+      <div class="arrow-corner">→</div>
+    </a>
+    <a href="#" class="cat-card">
+      <div class="cat-icon">🐟</div>
+      <h3>Marketplace<br>Vendors</h3>
+      <div class="count">14 stalls</div>
+      <div class="arrow-corner">→</div>
+    </a>
+    <a href="#" class="cat-card">
+      <div class="cat-icon">🛍️</div>
+      <h3>Shops &<br>Retail</h3>
+      <div class="count">9 stores</div>
+      <div class="arrow-corner">→</div>
+    </a>
+    <a href="#" class="cat-card">
+      <div class="cat-icon">💆</div>
+      <h3>Health &<br>Services</h3>
+      <div class="count">7 providers</div>
+      <div class="arrow-corner">→</div>
+    </a>
+  </div>
+</section>
+
+<section class="marketplace-feature">
+  <div class="marketplace-grid">
+    <div class="visual">
+      <div class="vendor-card vc-1">
+        <div class="vendor-img">🥬</div>
+        <div>
+          <div class="vendor-name">Aloha Produce</div>
+          <div class="vendor-tag">Local · Organic</div>
+        </div>
+      </div>
+      <div class="vendor-card vc-2">
+        <div class="vendor-img">🐟</div>
+        <div>
+          <div class="vendor-name">Kalihi Seafood</div>
+          <div class="vendor-tag">Day-boat fresh</div>
+        </div>
+      </div>
+      <div class="vendor-card vc-3">
+        <div class="vendor-img">🌶️</div>
+        <div>
+          <div class="vendor-name">Bangkok Spice</div>
+          <div class="vendor-tag">Thai · Lao herbs</div>
+        </div>
+      </div>
+      <div class="vendor-card vc-4">
+        <div class="vendor-img">⭐</div>
+        <div>
+          <div class="vendor-name">+ 11 more</div>
+          <div class="vendor-tag" style="opacity:0.85">Meet them all →</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">Indoor · Air-Conditioned · Daily</div>
+      <h2>The marketplace <em>locals trust</em> for the freshest catch.</h2>
+      <p>
+        Fourteen independent vendors. Day-boat fish, Asian produce you won't find at the big chains, hand-cut meats, and ingredients straight from the farms of Waianae and Waimanalo.
+      </p>
+      <div class="marketplace-stats">
+        <div class="ms-item">
+          <div class="ms-num">8AM</div>
+          <div class="ms-label">Opens daily</div>
+        </div>
+        <div class="ms-item">
+          <div class="ms-num">14</div>
+          <div class="ms-label">Vendors</div>
+        </div>
+        <div class="ms-item">
+          <div class="ms-num">A/C</div>
+          <div class="ms-label">Always cool</div>
+        </div>
+      </div>
+      <a href="#" class="btn btn-primary">
+        Meet the vendors
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="visit">
+  <div class="visit-grid">
+    <div>
+      <div class="eyebrow" style="color: var(--sun);">Plan your visit</div>
+      <h2>Easy in, <em>easy out.</em></h2>
+      <div class="info-row">
+        <div class="info-label">Address</div>
+        <div class="info-value">1199 Dillingham Blvd<br>Honolulu, HI 96817</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Marketplace</div>
+        <div class="info-value">Mon–Sun · 8 AM – 4 PM</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Restaurants</div>
+        <div class="info-value">Hours vary by tenant</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Parking</div>
+        <div class="info-value">300+ stalls · Always free</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">By bus</div>
+        <div class="info-value">Routes 1, 2, 19, 20</div>
+      </div>
+    </div>
+    <div class="map-mock">
+      <div class="map-pin">
+        <div class="pin-dot"></div>
+        <div class="pin-label">City Square · 1199 Dillingham</div>
+      </div>
+      <div class="map-features">
+        <div class="map-feature"><span class="check">✓</span>Free parking lot</div>
+        <div class="map-feature"><span class="check">✓</span>EV charging stations</div>
+        <div class="map-feature"><span class="check">✓</span>Solar-powered roof</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="display">City Square<br><span class="display-italic" style="color: var(--sun-deep);">Shopping Center</span></div>
+      <p>Family-owned. Locally rooted. Feeding Kalihi since 1976.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Visit</h4>
+      <a href="#">Location & Hours</a>
+      <a href="#">Parking & Transit</a>
+      <a href="#">Accessibility</a>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#">Restaurants</a>
+      <a href="#">Marketplace</a>
+      <a href="#">Shops & Services</a>
+      <a href="#">Events</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="#">Lease Space</a>
+      <a href="#">Contact Management</a>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 City Square Shopping Center</div>
+    <div>Privacy · Terms · Site by [Your Studio]</div>
+  </div>
+</footer>
+
+</body>
+</html>

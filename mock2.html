@@ -297,10 +297,10 @@
     line-height: 1.65;
   }
 
-  /* ── Vendor cards ────────────────────────────────── */
+  /* ── Vendor cards (2-col horizontal) ────────────── */
   .vendor-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
   .vendor-card {
@@ -309,6 +309,8 @@
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: row;
     transition: box-shadow 0.2s, transform 0.2s;
   }
   .vendor-card:hover {
@@ -316,13 +318,16 @@
     transform: translateY(-3px);
   }
   .vendor-photo {
-    width: 100%;
-    height: 220px;
+    width: 200px;
+    flex-shrink: 0;
     object-fit: cover;
     display: block;
   }
   .vendor-body {
-    padding: 22px 24px 20px;
+    padding: 24px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .vendor-category {
     font-size: 11px;
@@ -341,10 +346,10 @@
     line-height: 1.2;
   }
   .vendor-desc {
-    font-size: 13.5px;
+    font-size: 13px;
     color: rgba(26,20,16,0.6);
     line-height: 1.55;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   .cta-row {
     display: flex;
@@ -453,61 +458,8 @@
     font-weight: 500;
   }
 
-  /* ── Marketplace vendor grid ─────────────────────── */
+  /* ── Marketplace vendor section ──────────────────── */
   .mkt-section { background: var(--gray-1); }
-  .mkt-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-  .mkt-cat {
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-  }
-  .mkt-cat-photo {
-    width: 100%;
-    height: 130px;
-    object-fit: cover;
-    display: block;
-  }
-  .mkt-cat-body { padding: 18px 20px 20px; }
-  .mkt-cat-name {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 14px;
-  }
-  .mkt-list { list-style: none; }
-  .mkt-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12.5px;
-    padding: 7px 0;
-    border-bottom: 1px solid var(--border);
-    gap: 8px;
-  }
-  .mkt-list li:last-child { border-bottom: none; padding-bottom: 0; }
-  .mkt-list li span { flex: 1; color: var(--ink); }
-  .mkt-list a {
-    font-size: 11.5px;
-    font-weight: 600;
-    color: var(--leaf);
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  .mkt-list a:hover { text-decoration: underline; }
-  .mkt-more {
-    font-size: 11.5px;
-    color: var(--leaf);
-    font-weight: 600;
-    margin-top: 8px;
-    opacity: 0.8;
-  }
 
   /* ── Shops & Services ────────────────────────────── */
   .shops-grid {
@@ -962,7 +914,8 @@
 
   /* ── Responsive ──────────────────────────────────── */
   @media (max-width: 1024px) {
-    .mkt-grid { grid-template-columns: repeat(2, 1fr); }
+    .vendor-photo { width: 160px; }
+    .mkt-cat-photo { width: 140px; }
   }
   @media (max-width: 900px) {
     .nav { padding: 0 24px; gap: 20px; }
@@ -971,7 +924,7 @@
     .hero-content { padding: 0 24px 52px; }
     .tabs-strip { padding: 0 24px; overflow-x: auto; }
     .section { padding: 52px 24px; }
-    .vendor-grid { grid-template-columns: 1fr 1fr; }
+    .vendor-grid { grid-template-columns: 1fr; }
     .shops-grid { grid-template-columns: 1fr; }
     .highlight-strip { padding: 40px 24px; }
     .highlight-strip-inner { flex-direction: column; gap: 28px; }
@@ -986,10 +939,9 @@
     .spaces-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
-    .vendor-grid { grid-template-columns: 1fr; }
+    .vendor-photo { width: 120px; }
     .shops-grid { grid-template-columns: 1fr; }
     .shop-card-photo { width: 130px; }
-    .mkt-grid { grid-template-columns: 1fr 1fr; }
     .hero-stats { flex-wrap: wrap; }
     .footer-top { grid-template-columns: 1fr; }
     .hs-stats { gap: 24px; }
@@ -1093,58 +1045,63 @@
       <h2 class="section-title">Marketplace Vendors</h2>
       <p class="section-desc">Find fresh produce, seafood, meats, and specialty goods from our local vendors inside the marketplace.</p>
     </div>
-    <div class="mkt-grid">
+    <div class="vendor-grid">
 
-      <div class="mkt-cat">
-        <img src="photo/market%20place/veggietable.jpg" alt="Fresh Produce" class="mkt-cat-photo">
-        <div class="mkt-cat-body">
-          <div class="mkt-cat-name">Fresh Produce</div>
-          <ul class="mkt-list">
-            <li><span>Farm Life</span><a href="tel:8083971991">(808) 397-1991</a></li>
-            <li><span>Island Green Produce</span><a href="tel:8084972219">(808) 497-2219</a></li>
-            <li><span>Marissa's Produce</span><a href="tel:8085205612">(808) 520-5612</a></li>
-          </ul>
-          <div class="mkt-more">+4 more vendors</div>
+      <div class="vendor-card">
+        <img src="photo/market%20place/veggietable.jpg" alt="Farm Life" class="vendor-photo">
+        <div class="vendor-body">
+          <div class="vendor-category">Fresh Produce</div>
+          <div class="vendor-name">Farm Life</div>
+          <div class="vendor-desc">Locally grown vegetables, fruits, and farm-fresh goods — straight from the farm to your table every morning.</div>
+          <div class="cta-row">
+            <a href="tel:8083971991" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
         </div>
       </div>
 
-      <div class="mkt-cat">
-        <img src="photo/market%20place/seafood.jpg" alt="Fresh Seafood" class="mkt-cat-photo">
-        <div class="mkt-cat-body">
-          <div class="mkt-cat-name">Seafood</div>
-          <ul class="mkt-list">
-            <li><span>Brian's Seafood Market</span><a href="tel:8085546872">(808) 554-6872</a></li>
-            <li><span>7 Sisters Market</span><a href="tel:8088001641">(808) 800-1641</a></li>
-            <li><span>Marivic Seafood &amp; Meats</span><a href="tel:8087418127">(808) 741-8127</a></li>
-          </ul>
-          <div class="mkt-more">+1 more vendor</div>
+      <div class="vendor-card">
+        <img src="photo/market%20place/seafood.jpg" alt="Brian's Seafood Market" class="vendor-photo">
+        <div class="vendor-body">
+          <div class="vendor-category">Seafood</div>
+          <div class="vendor-name">Brian's Seafood Market</div>
+          <div class="vendor-desc">Fresh catch daily — whole fish, fillets, and shellfish sourced from local Hawaii waters and beyond.</div>
+          <div class="cta-row">
+            <a href="tel:8085546872" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
         </div>
       </div>
 
-      <div class="mkt-cat">
-        <img src="photo/market%20place/seafood.jpg" alt="Meat and More" class="mkt-cat-photo" style="object-position: right center;">
-        <div class="mkt-cat-body">
-          <div class="mkt-cat-name">Meat &amp; More</div>
-          <ul class="mkt-list">
-            <li><span>7 Sisters Market</span><a href="tel:8084458276">(808) 445-8276</a></li>
-            <li><span>Marivic Seafood &amp; Meats</span><a href="tel:8087418127">(808) 741-8127</a></li>
-            <li><span>Pinoy One</span><a href="tel:8083813235">(808) 381-3235</a></li>
-          </ul>
+      <div class="vendor-card">
+        <img src="photo/market%20place/seafood.jpg" alt="Marivic Seafood & Meats" class="vendor-photo" style="object-position: right center;">
+        <div class="vendor-body">
+          <div class="vendor-category">Meat &amp; More</div>
+          <div class="vendor-name">Marivic Seafood &amp; Meats</div>
+          <div class="vendor-desc">Quality cuts of pork, beef, and poultry alongside fresh seafood selections — your one-stop protein shop.</div>
+          <div class="cta-row">
+            <a href="tel:8087418127" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
         </div>
       </div>
 
-      <div class="mkt-cat">
-        <img src="photo/market%20place/knife.jpg" alt="Retail and Specialty" class="mkt-cat-photo" style="object-position: center top;">
-        <div class="mkt-cat-body">
-          <div class="mkt-cat-name">Retail &amp; Specialty</div>
-          <ul class="mkt-list">
-            <li><span>AFrames Tokyo</span><a href="tel:8086791655">(808) 679-1655</a></li>
-            <li><span>Ukay-Ukay</span><a href="tel:8082820121">(808) 282-0121</a></li>
-            <li><span>Pinoy One</span><a href="tel:8083813235">(808) 381-3235</a></li>
-          </ul>
+      <div class="vendor-card">
+        <img src="photo/market%20place/knife.jpg" alt="AFrames Tokyo" class="vendor-photo" style="object-position: center top;">
+        <div class="vendor-body">
+          <div class="vendor-category">Retail &amp; Specialty</div>
+          <div class="vendor-name">AFrames Tokyo</div>
+          <div class="vendor-desc">Japanese kitchen knives, cookware, and specialty culinary goods — a hidden gem inside the marketplace.</div>
+          <div class="cta-row">
+            <a href="tel:8086791655" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
         </div>
       </div>
 
+    </div>
+    <div class="see-all-wrap">
+      <a href="#" class="see-all-link">See all 20+ marketplace vendors →</a>
     </div>
   </div>
 </section>
@@ -1201,6 +1158,20 @@
         </div>
       </div>
 
+      <div class="vendor-card">
+        <img src="photo/market%20place/food2.jpg" alt="Koala Moa Rotisserie Chicken" class="vendor-photo">
+        <div class="vendor-body">
+          <div class="vendor-category">Hawaiian Local</div>
+          <div class="vendor-name">Koala Moa Rotisserie Chicken</div>
+          <div class="vendor-desc">Juicy, golden rotisserie chicken — simple, satisfying, and always fresh out of the rotisserie.</div>
+          <div class="cta-row">
+            <a href="tel:8085236701" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-menu">View Menu</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="see-all-wrap">
       <a href="#" class="see-all-link">See all 14 restaurants →</a>
@@ -1244,6 +1215,16 @@
           <div class="shop-cat">Pets</div>
           <div class="shop-name">Kalihi Pet Center</div>
           <p class="shop-desc">Your neighborhood pet shop for food, supplies, accessories, and advice — keeping your furry ohana happy and healthy.</p>
+          <a href="#" class="shop-learn">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="photo/market%20place/ebikes.jpg" alt="Aloha Golf Center" class="shop-card-photo">
+        <div class="shop-card-body">
+          <div class="shop-cat">Recreation</div>
+          <div class="shop-name">Aloha Golf Center</div>
+          <p class="shop-desc">Driving range, club rentals, and golf gear for players of all skill levels — tee up right here in Kalihi.</p>
           <a href="#" class="shop-learn">Learn More →</a>
         </div>
       </div>

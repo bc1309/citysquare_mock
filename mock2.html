@@ -319,6 +319,8 @@
   }
   .vendor-photo {
     width: 200px;
+    height: 100%;
+    min-height: 180px;
     flex-shrink: 0;
     object-fit: cover;
     display: block;
@@ -328,6 +330,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex: 1;
   }
   .vendor-category {
     font-size: 11px;
@@ -481,6 +484,8 @@
   .shop-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
   .shop-card-photo {
     width: 180px;
+    height: 100%;
+    min-height: 160px;
     flex-shrink: 0;
     object-fit: cover;
     display: block;

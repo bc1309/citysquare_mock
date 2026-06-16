@@ -51,6 +51,30 @@
   }
   .mockup-banner span { color: #fff; }
 
+  /* ── Top bar ──────────────────────────────────────── */
+  .topbar {
+    background: var(--leaf);
+    color: rgba(255,255,255,0.9);
+    padding: 8px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+  .topbar-left { display: flex; gap: 28px; align-items: center; }
+  .topbar-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #7ee8a2;
+    animation: pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
   /* ── Navigation ──────────────────────────────────── */
   .nav {
     position: sticky;
@@ -119,6 +143,11 @@
     object-fit: cover;
     object-position: center;
     z-index: 0;
+  }
+  .hero-video-mobile { display: none; }
+  @media (max-width: 900px) {
+    .hero-video-desktop { display: none; }
+    .hero-video-mobile { display: block; }
   }
   .hero-overlay {
     position: absolute;
@@ -995,6 +1024,18 @@
   <span>✦ Concept Mockup</span> — City Square Shopping Center
 </div>
 
+<!-- ─── Top Bar ────────────────────────────────────────── -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-status">
+      <span class="status-dot"></span>
+      Open Today
+    </span>
+    <span>Marketplace: 8am – 4pm Daily</span>
+    <span>1199 Dillingham Blvd, Honolulu, HI 96817</span>
+  </div>
+</div>
+
 <!-- ─── Navigation ─────────────────────────────────────── -->
 <nav class="nav">
   <a href="#" class="nav-logo">
@@ -1012,8 +1053,11 @@
 
 <!-- ─── Hero ───────────────────────────────────────────── -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="photo/landing_video.mp4" type="video/mp4">
+  <video class="hero-video hero-video-desktop" autoplay muted loop playsinline>
+    <source src="photo/city_square_desktop_1080p.mp4" type="video/mp4">
+  </video>
+  <video class="hero-video hero-video-mobile" autoplay muted loop playsinline>
+    <source src="photo/city_square_mobile_720p.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">

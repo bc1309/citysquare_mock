@@ -3,34 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City Square Shopping Center — Concept Mockup v2</title>
+<title>City Square Shopping Center — Kalihi, Honolulu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+
+  /* ── Tokens ───────────────────────────────────────── */
   :root {
-    --ink: #1a1410;
-    --paper: #faf6ef;
-    --paper-2: #f1e9db;
-    --paper-3: #e8dccb;
-    --leaf: #2f5d3a;
-    --leaf-mid: #4a7c59;
-    --leaf-light: #d4e8da;
+    --ink:       #1a1410;
+    --white:     #ffffff;
+    --gray-1:    #f7f7f5;
+    --gray-2:    #eeede9;
+    --gray-3:    #c8c4bc;
+    --leaf:      #2f5d3a;
     --leaf-deep: #1d3d24;
-    --tan: #c8b99a;
-    --sun: #e8762a;
-    --sun-deep: #c45614;
-    --gold: #d4a437;
-    --ocean: #1f4d5c;
-    --border: rgba(26,20,16,0.12);
-    --radius: 12px;
+    --leaf-light:#d4e8da;
+    --sun:       #e8762a;
+    --gold:      #d4a437;
+    --border:    rgba(26,20,16,0.10);
+    --radius:    12px;
     --radius-lg: 20px;
+    --shadow:    0 2px 16px rgba(26,20,16,0.08);
+    --shadow-hover: 0 8px 32px rgba(26,20,16,0.13);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: var(--paper);
+    background: var(--white);
     color: var(--ink);
     font-family: 'Inter Tight', system-ui, sans-serif;
     font-size: 16px;
@@ -38,23 +39,11 @@
     overflow-x: hidden;
   }
 
-  /* ── Mockup banner ───────────────────────────────── */
-  .mockup-banner {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 10px 24px;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-align: center;
-  }
-  .mockup-banner span { color: var(--sun); }
-
   /* ── Top bar ──────────────────────────────────────── */
   .topbar {
     background: var(--leaf);
     color: rgba(255,255,255,0.9);
-    padding: 9px 40px;
+    padding: 8px 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,821 +59,685 @@
   .status-dot {
     width: 8px; height: 8px; border-radius: 50%;
     background: #7ee8a2;
-    box-shadow: 0 0 0 3px rgba(126,232,162,0.25);
-    animation: pulse-dot 2.4s infinite;
+    animation: pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
   }
-  @keyframes pulse-dot {
+  @keyframes pulse {
     0%,100% { box-shadow: 0 0 0 3px rgba(126,232,162,0.25); }
-    50%      { box-shadow: 0 0 0 6px rgba(126,232,162,0.06); }
+    50%     { box-shadow: 0 0 0 6px rgba(126,232,162,0.06); }
   }
-  .topbar-right { display: flex; gap: 20px; align-items: center; }
-  .topbar a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.15s; }
-  .topbar a:hover { color: #fff; }
-  .topbar-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.25); }
 
-  /* ── Nav ──────────────────────────────────────────── */
+  /* ── Navigation ──────────────────────────────────── */
   .nav {
-    background: var(--paper);
-    border-bottom: 1px solid var(--border);
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 100;
-    height: 86px;
-    box-shadow: 0 1px 0 var(--border);
-  }
-  .nav-logo {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    height: 96px;
     display: flex;
     align-items: center;
-    text-decoration: none;
+    padding: 0 40px;
+    gap: 40px;
   }
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform 0.22s, opacity 0.22s;
+  }
+  .nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.is-open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  /* ── Scroll nav arrows ───────────────────────────── */
+  .scroll-nav {
+    position: fixed;
+    right: 20px;
+    bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 300;
+  }
+  .scroll-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    border: 1.5px solid var(--border);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.14);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink);
+    line-height: 1;
+    transition: opacity 0.25s, transform 0.2s;
+  }
+  .scroll-btn:hover { background: var(--paper); transform: scale(1.08); }
+  .scroll-btn.hidden { opacity: 0; pointer-events: none; }
   .nav-logo img {
-    height: 69px;
+    height: 77px;
     width: auto;
+    object-fit: contain;
     display: block;
   }
   .nav-links {
-    display: flex;
-    gap: 36px;
     list-style: none;
+    display: flex;
+    gap: 32px;
+    flex: 1;
+    justify-content: center;
   }
   .nav-links a {
+    font-size: 14px;
+    font-weight: 600;
     color: var(--ink);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 15px;
+    letter-spacing: 0.01em;
     opacity: 0.75;
-    transition: opacity 0.2s;
-    position: relative;
-    padding-bottom: 4px;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 0; height: 2px;
-    background: var(--leaf);
-    border-radius: 1px;
-    transition: width 0.25s;
+    transition: opacity 0.15s;
   }
   .nav-links a:hover { opacity: 1; }
-  .nav-links a:hover::after { width: 100%; }
-  .btn-primary {
+  .nav-cta {
     background: var(--leaf);
     color: #fff;
-    padding: 11px 24px;
+    padding: 10px 22px;
     border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13.5px;
+    font-weight: 700;
     text-decoration: none;
     letter-spacing: 0.01em;
-    transition: background 0.2s, transform 0.15s;
-    display: inline-block;
     white-space: nowrap;
+    transition: background 0.18s;
   }
-  .btn-primary:hover { background: var(--leaf-deep); transform: translateY(-1px); }
-  .btn-ghost {
-    border: 1.5px solid rgba(255,255,255,0.35);
-    color: #fff;
-    padding: 11px 24px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-    display: inline-block;
-    white-space: nowrap;
-  }
-  .btn-ghost:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.6); }
+  .nav-cta:hover { background: var(--leaf-deep); }
 
-  /* ── Hero ─────────────────────────────────────────── */
+  /* ── Hero (video) ────────────────────────────────── */
   .hero {
-    background: var(--leaf-deep);
-    color: var(--paper);
-    padding: 72px 40px 0;
     position: relative;
+    height: 92vh;
+    min-height: 560px;
+    max-height: 860px;
     overflow: hidden;
+    display: flex;
+    align-items: flex-end;
   }
-  .hero::after {
-    content: '';
+  .hero-video {
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(74,124,89,0.35) 0%, transparent 65%),
-      radial-gradient(ellipse 40% 60% at 10% 90%, rgba(212,164,55,0.12) 0%, transparent 55%);
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
   }
-  .hero-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 52px;
-    align-items: end;
-    position: relative;
+  .hero-video-mobile { display: none; }
+  @media (max-width: 900px) {
+    .hero-video-desktop { display: none; }
+    .hero-video-mobile { display: block; }
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(10,20,12,0.88) 0%,
+      rgba(10,20,12,0.45) 32%,
+      rgba(10,20,12,0.05) 100%
+    );
     z-index: 1;
   }
-  .hero-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 700;
-    margin-bottom: 18px;
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 48px;
   }
-  .hero-eyebrow::before {
-    content: '';
+  .hero-eyebrow {
     display: inline-block;
-    width: 28px; height: 1.5px;
-    background: var(--gold);
-    flex-shrink: 0;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    color: rgba(255,255,255,0.9);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
   }
   .hero-title {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(38px, 5.5vw, 62px);
+    font-size: clamp(40px, 6vw, 72px);
     font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.025em;
-    margin-bottom: 22px;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 10px;
+    max-width: 680px;
   }
   .hero-title em {
     font-style: italic;
     font-weight: 500;
-    color: var(--gold);
+    color: #a8d4b4;
   }
-  .hero-subtitle {
+  .hero-sub {
     font-size: 17px;
-    opacity: 0.78;
+    color: rgba(255,255,255,0.72);
     max-width: 480px;
-    margin-bottom: 38px;
     line-height: 1.65;
+    margin-bottom: 18px;
   }
-  .hero-content { padding-bottom: 72px; }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .btn-primary {
+    background: var(--leaf);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .btn-primary:hover { background: var(--leaf-deep); }
+  .btn-outline {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.18s, border-color 0.18s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.6); }
   .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: none;
     gap: 0;
-    margin-top: 52px;
-    padding-top: 36px;
-    border-top: 1px solid rgba(255,255,255,0.12);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 28px;
+    max-width: 520px;
   }
-  .hero-stat { padding-right: 24px; }
-  .hero-stat + .hero-stat {
-    padding-left: 24px;
-    border-left: 1px solid rgba(255,255,255,0.12);
+  .hero-stat {
+    flex: 1;
+    padding-right: 24px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    margin-right: 24px;
   }
+  .hero-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
   .stat-num {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 34px;
+    font-size: 28px;
     font-weight: 800;
-    color: var(--gold);
+    color: #fff;
     line-height: 1;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
   }
-  .stat-label { font-size: 13px; opacity: 0.65; line-height: 1.4; }
-
-  /* Hero photo */
-  .hero-photo {
-    position: relative;
-    border-radius: 20px 20px 0 0;
-    overflow: hidden;
-    height: 580px;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-bottom: none;
-  }
-  .hero-photo img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .hero-photo-label {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.55));
-    padding: 40px 22px 18px;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
-    font-weight: 700;
-  }
-
-  /* Restaurant card photo header */
-  .r-photo {
-    width: calc(100% + 52px);
-    height: 160px;
-    object-fit: cover;
-    display: block;
-    margin: -26px -26px 18px;
-    border-radius: var(--radius) var(--radius) 0 0;
-    transition: transform 0.4s;
-  }
-  .r-card:hover .r-photo { transform: scale(1.03); }
-
-  /* Vendor category photo header */
-  .mvendor-photo {
-    width: calc(100% + 40px);
-    height: 90px;
-    object-fit: cover;
-    display: block;
-    margin: -20px -20px 12px;
-    border-radius: var(--radius) var(--radius) 0 0;
-  }
-
-  /* Shops featured photo strip */
-  .shops-photo-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-  .shop-photo-card {
-    position: relative;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    height: 220px;
-  }
-  .shop-photo-card img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s;
-  }
-  .shop-photo-card:hover img { transform: scale(1.04); }
-  .shop-photo-label {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(26,20,16,0.72));
-    padding: 28px 20px 16px;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: 'Fraunces', Georgia, serif;
-  }
-
-  /* ── Marquee ──────────────────────────────────────── */
-  /* ── Construction notice ─────────────────────────── */
-  .construction-notice {
-    background: #fffbea;
-    border-top: 1px solid #f0d96b;
-    border-bottom: 3px solid #f0d96b;
-    padding: 28px 40px 24px;
-    text-align: center;
-  }
-  .cn-setup {
-    font-family: 'Inter Tight', sans-serif;
-    font-size: 15px;
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
     font-weight: 500;
-    color: #7a5c1a;
-    letter-spacing: 0.02em;
-    margin-bottom: 8px;
-  }
-  .cn-punchline {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--leaf-deep);
-    line-height: 1.3;
-    margin-bottom: 10px;
-  }
-  .cn-tag {
-    font-family: 'Inter Tight', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #7a5c1a;
-    letter-spacing: 0.04em;
-    margin-bottom: 0;
+    letter-spacing: 0.01em;
   }
 
-  .marquee-bar {
-    background: var(--sun);
+  /* ── Category tabs ───────────────────────────────── */
+  .tabs-strip {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+  }
+  .tabs-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
     padding: 14px 0;
-    overflow: hidden;
+  }
+  .tab {
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(26,20,16,0.6);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s;
     white-space: nowrap;
-    user-select: none;
   }
-  .marquee-track {
-    display: inline-flex;
-    animation: marquee-scroll 40s linear infinite;
-  }
-  .marquee-item {
-    display: inline-flex;
-    align-items: center;
-    padding: 0 28px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+  .tab:hover { background: var(--gray-1); color: var(--ink); }
+  .tab.active {
+    background: var(--ink);
     color: #fff;
   }
-  .marquee-item::after {
-    content: '✦';
-    margin-left: 28px;
-    font-size: 8px;
-    opacity: 0.55;
-  }
-  @keyframes marquee-scroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
 
-  /* ── Shared section layout ────────────────────────── */
+  /* ── Section wrapper ─────────────────────────────── */
   .section {
-    padding: 88px 40px;
+    padding: 72px 40px;
   }
   .section-inner {
-    max-width: 1180px;
+    max-width: 1200px;
     margin: 0 auto;
   }
-  .section-header { margin-bottom: 52px; }
+  .section-header {
+    margin-bottom: 40px;
+  }
   .eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    letter-spacing: 0.14em;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--leaf);
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  .eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 22px; height: 1.5px;
-    background: var(--leaf);
-    flex-shrink: 0;
+    margin-bottom: 10px;
   }
   .section-title {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(28px, 3.5vw, 44px);
-    font-weight: 700;
-    letter-spacing: -0.022em;
-    line-height: 1.12;
-    margin-bottom: 14px;
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 10px;
   }
   .section-desc {
-    font-size: 16.5px;
-    opacity: 0.68;
-    max-width: 540px;
+    font-size: 15px;
+    color: rgba(26,20,16,0.6);
+    max-width: 520px;
     line-height: 1.65;
   }
 
-  /* ── Restaurant grid ──────────────────────────────── */
-  .restaurant-grid {
+  /* ── Vendor cards (2-col horizontal) ────────────── */
+  .vendor-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
-  .r-card {
-    background: var(--paper);
+  .vendor-card {
+    background: var(--white);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 26px;
-    position: relative;
+    border-radius: var(--radius-lg);
     overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: row;
     transition: box-shadow 0.2s, transform 0.2s;
   }
-  .r-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--leaf);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s;
+  .vendor-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
   }
-  .r-card:hover { box-shadow: 0 8px 36px rgba(26,20,16,0.1); transform: translateY(-2px); }
-  .r-card:hover::before { transform: scaleX(1); }
-  .r-emoji { font-size: 34px; margin-bottom: 14px; display: block; }
-  .r-name {
+  .vendor-photo {
+    width: 200px;
+    height: 100%;
+    min-height: 180px;
+    flex-shrink: 0;
+    object-fit: cover;
+    display: block;
+  }
+  .vendor-body {
+    padding: 24px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+  .vendor-category {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--leaf);
+    margin-bottom: 6px;
+  }
+  .vendor-name {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.25;
-    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.2;
   }
-  .r-desc {
-    font-size: 13.5px;
-    opacity: 0.62;
-    line-height: 1.5;
+  .vendor-desc {
+    font-size: 13px;
+    color: rgba(26,20,16,0.6);
+    line-height: 1.55;
     margin-bottom: 16px;
   }
-  .r-phone {
-    font-size: 13px;
-    color: var(--leaf);
-    font-weight: 600;
+  .cta-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .cta-btn {
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
     text-decoration: none;
     letter-spacing: 0.01em;
+    transition: all 0.15s;
+    border: 1.5px solid transparent;
   }
-  .r-phone:hover { text-decoration: underline; }
+  .cta-call {
+    background: var(--leaf);
+    color: #fff;
+  }
+  .cta-call:hover { background: var(--leaf-deep); }
+  .cta-menu {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--gray-3);
+  }
+  .cta-menu:hover { border-color: var(--ink); background: var(--gray-1); }
+  .cta-more {
+    background: transparent;
+    color: rgba(26,20,16,0.5);
+    border-color: var(--border);
+  }
+  .cta-more:hover { color: var(--ink); border-color: var(--gray-3); }
 
-  /* ── See-all links ────────────────────────────────── */
-  .section-see-all {
+  .see-all-wrap {
     text-align: center;
-    margin-top: 32px;
+    margin-top: 36px;
   }
   .see-all-link {
     display: inline-block;
-    color: var(--leaf);
-    font-weight: 600;
-    font-size: 15px;
-    text-decoration: none;
-    border-bottom: 2px solid var(--leaf-light);
-    padding-bottom: 2px;
-    transition: border-color 0.18s;
-  }
-  .see-all-link:hover { border-color: var(--leaf); }
-
-  .mvendor-more {
-    font-size: 12px;
-    color: var(--leaf);
-    font-weight: 600;
-    margin-top: 6px;
-    opacity: 0.75;
-  }
-
-  /* ── Marketplace block ────────────────────────────── */
-  .market-hero {
-    background: var(--leaf-deep);
-    color: var(--paper);
-  }
-  .market-hero .eyebrow { color: var(--gold); }
-  .market-hero .eyebrow::before { background: var(--gold); }
-  .market-hero .section-title { color: var(--paper); }
-  .market-hero .section-desc { color: var(--paper); opacity: 0.72; }
-
-  .hours-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.18);
+    padding: 12px 32px;
+    border: 1.5px solid var(--gray-3);
     border-radius: 999px;
-    padding: 11px 22px;
     font-size: 14px;
     font-weight: 600;
-    margin-top: 22px;
-    color: var(--paper);
-  }
-  .hours-badge .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #7ee8a2;
-    animation: pulse-dot 2.4s infinite;
-    flex-shrink: 0;
-  }
-
-  .vendor-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(252px, 1fr));
-    gap: 22px;
-    margin-top: 52px;
-  }
-  .vendor-cat {
-    background: var(--paper);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
     color: var(--ink);
-  }
-  .vendor-cat-icon { font-size: 28px; margin-bottom: 10px; display: block; }
-  .vendor-cat-name {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 17px;
-    font-weight: 600;
-    margin-bottom: 18px;
-  }
-  .vendor-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
-  .vendor-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 14px;
-  }
-  .vendor-list li:last-child { border-bottom: none; padding-bottom: 0; }
-  .vendor-list li span { flex: 1; }
-  .vendor-list a {
-    color: var(--leaf);
-    font-size: 12.5px;
-    font-weight: 600;
     text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
+    transition: border-color 0.18s, background 0.18s;
   }
-  .vendor-list a:hover { text-decoration: underline; }
+  .see-all-link:hover { border-color: var(--ink); background: var(--gray-1); }
 
-  /* ── Shops & Services ─────────────────────────────── */
-  .shops-section { background: var(--paper-2); }
+  /* ── Marketplace highlight strip ─────────────────── */
+  .highlight-strip {
+    background: var(--leaf-deep);
+    padding: 52px 40px;
+  }
+  .highlight-strip-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hs-text { flex: 1; min-width: 260px; }
+  .hs-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 10px;
+  }
+  .hs-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .hs-title em { font-style: italic; font-weight: 500; color: #a8d4b4; }
+  .hs-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+  .hs-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hs-stat { text-align: center; }
+  .hs-stat-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hs-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+  }
+
+  /* ── Marketplace vendor section ──────────────────── */
+  .mkt-section { background: var(--gray-1); }
+
+  /* ── Shops & Services ────────────────────────────── */
   .shops-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
-    gap: 14px;
-  }
-  .shop-chip {
-    background: var(--paper);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px 18px;
-    transition: background 0.15s, border-color 0.15s, transform 0.15s;
-    cursor: default;
-  }
-  .shop-chip:hover {
-    background: var(--leaf-light);
-    border-color: var(--leaf-mid);
-    transform: translateY(-1px);
-  }
-  .chip-cat {
-    font-size: 10.5px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--leaf);
-    font-weight: 700;
-    margin-bottom: 4px;
-    opacity: 0.85;
-  }
-  .chip-name { font-size: 14px; font-weight: 500; line-height: 1.3; }
-
-  /* ── Events ──────────────────────────────────────── */
-  .events-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+    margin-bottom: 12px;
   }
-  .event-card {
-    background: var(--paper);
+  .shop-card {
+    background: var(--white);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     overflow: hidden;
+    box-shadow: var(--shadow);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     transition: box-shadow 0.2s, transform 0.2s;
   }
-  .event-card:hover {
-    box-shadow: 0 10px 40px rgba(26,20,16,0.1);
-    transform: translateY(-3px);
-  }
-  .event-photo {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
+  .shop-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+  .shop-card-photo {
+    width: 180px;
+    height: 100%;
+    min-height: 160px;
     flex-shrink: 0;
-  }
-  .event-photo img {
-    width: 100%; height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s;
   }
-  .event-card:hover .event-photo img { transform: scale(1.04); }
-  .event-date-badge {
-    position: absolute;
-    top: 16px; left: 16px;
-    background: var(--sun);
-    color: #fff;
-    border-radius: 10px;
-    padding: 8px 14px;
-    text-align: center;
-    line-height: 1.1;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  }
-  .event-date-month {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    display: block;
-  }
-  .event-date-day {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 26px;
-    font-weight: 800;
-    display: block;
-    line-height: 1;
-  }
-  .event-body {
-    padding: 24px;
+  .shop-card-body {
+    padding: 24px 26px;
     display: flex;
     flex-direction: column;
-    flex: 1;
-    gap: 10px;
+    justify-content: center;
+    gap: 6px;
   }
-  .event-tag {
+  .shop-cat {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--leaf);
   }
-  .event-title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.25;
+  .shop-name {
+    font-size: 18px;
+    font-weight: 700;
     color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    line-height: 1.2;
   }
-  .event-desc {
-    font-size: 14px;
-    opacity: 0.65;
-    line-height: 1.6;
-    flex: 1;
-  }
-  .event-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  .shop-desc {
     font-size: 13px;
-    font-weight: 500;
-    opacity: 0.6;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
+    color: rgba(26,20,16,0.6);
+    line-height: 1.55;
+    margin-top: 2px;
+    margin-bottom: 6px;
   }
-  .event-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13.5px;
+  .shop-learn {
+    font-size: 13px;
     font-weight: 700;
     color: var(--leaf);
     text-decoration: none;
-    margin-top: 14px;
-    transition: gap 0.15s;
   }
-  .event-cta:hover { gap: 9px; text-decoration: underline; }
+  .shop-learn:hover { text-decoration: underline; }
 
-  /* ── Visit ────────────────────────────────────────── */
+  /* ── Visit / Hours ───────────────────────────────── */
+  .visit-section { background: var(--gray-1); }
   .visit-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 44px;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
     align-items: start;
   }
-  .loc-cards { display: flex; flex-direction: column; gap: 22px; }
-  .loc-card {
-    background: var(--paper);
-    border: 1px solid var(--border);
+  .visit-joke {
+    background: #fffbea;
+    border: 1.5px solid #f0d96b;
     border-radius: var(--radius-lg);
-    padding: 36px;
+    padding: 24px 32px 20px;
+    margin-bottom: 32px;
+    text-align: center;
   }
-  .loc-badge {
+  .vj-setup {
+    font-size: 13px;
+    font-weight: 500;
+    color: #9a7c3a;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+  .vj-punchline {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--leaf-deep);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .vj-tag {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--sun);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .loc-block { }
+  .loc-label {
     display: inline-block;
     background: var(--leaf);
     color: #fff;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 5px 13px;
+    padding: 4px 12px;
     border-radius: 999px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
-  .loc-badge.annex { background: var(--ocean); }
+  .loc-label.annex { background: #1f4d5c; }
   .loc-address {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.35;
-    margin-bottom: 12px;
-  }
-  .visit-construction-notice {
-    background: #fffbea;
-    border: 2px solid #f0d96b;
-    border-radius: var(--radius-lg);
-    padding: 32px 40px 28px;
-    margin-top: 28px;
-    text-align: center;
-  }
-  .vcn-setup {
-    font-family: 'Inter Tight', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    color: #7a5c1a;
-    letter-spacing: 0.02em;
-    margin-bottom: 10px;
-  }
-  .vcn-punchline {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--leaf-deep);
-    line-height: 1.3;
-    margin-bottom: 12px;
-  }
-  .vcn-tag {
-    font-family: 'Inter Tight', sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
-    color: #7a5c1a;
-    letter-spacing: 0.04em;
-    margin-bottom: 0;
+    line-height: 1.35;
+    margin-bottom: 18px;
+    color: var(--ink);
   }
-  .hours-tbl { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-  .hours-tbl td {
-    padding: 9px 0;
-    font-size: 14px;
-    border-bottom: 1px solid var(--border);
-  }
-  .hours-tbl td:last-child { text-align: right; font-weight: 500; }
-  .hours-tbl tr:last-child td { border-bottom: none; }
-  .loc-meta { display: flex; flex-direction: column; gap: 9px; font-size: 14px; opacity: 0.68; }
-  .loc-meta span { display: flex; align-items: center; gap: 8px; }
-  .dir-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+  .hours-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
     font-size: 13.5px;
-    color: var(--leaf);
-    font-weight: 600;
-    text-decoration: none;
-    margin-top: 16px;
-    transition: gap 0.15s;
   }
-  .dir-link:hover { text-decoration: underline; gap: 9px; }
-
-  /* Map placeholder */
-  .map-wrap {
-    background: var(--leaf-light);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    height: 440px;
+  .hours-tbl td { padding: 8px 0; border-bottom: 1px solid var(--border); color: rgba(26,20,16,0.75); }
+  .hours-tbl td:last-child { text-align: right; font-weight: 600; color: var(--ink); }
+  .hours-tbl tr:last-child td { border-bottom: none; }
+  .loc-meta {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 16px;
   }
-  .map-wrap::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(0deg, rgba(47,93,58,0.04) 0px, rgba(47,93,58,0.04) 1px, transparent 1px, transparent 48px),
-      repeating-linear-gradient(90deg, rgba(47,93,58,0.04) 0px, rgba(47,93,58,0.04) 1px, transparent 1px, transparent 48px);
+  .loc-meta span { font-size: 13px; color: rgba(26,20,16,0.55); }
+  .dir-link {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--leaf);
+    text-decoration: none;
   }
-  .map-content {
-    position: relative;
-    z-index: 1;
+  .dir-link:hover { text-decoration: underline; }
+  .loc-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+  .map-placeholder {
+    background: var(--gray-2);
+    border-radius: var(--radius-lg);
+    height: 100%;
+    min-height: 340px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    justify-content: center;
+    border: 1px solid var(--border);
+    gap: 10px;
   }
-  .map-pin {
-    width: 52px; height: 52px;
+  .map-pin-icon {
+    width: 40px;
+    height: 40px;
     background: var(--leaf);
     border-radius: 50% 50% 50% 0;
     transform: rotate(-45deg);
     position: relative;
-    box-shadow: 0 4px 20px rgba(47,93,58,0.45);
-    animation: pulse-pin 2s infinite;
   }
-  .map-pin::after {
+  .map-pin-icon::after {
     content: '';
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%) rotate(45deg);
-    width: 18px; height: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
     background: #fff;
     border-radius: 50%;
   }
-  @keyframes pulse-pin {
-    0%,100% { box-shadow: 0 4px 20px rgba(47,93,58,0.45), 0 0 0 0 rgba(47,93,58,0.28); }
-    50%      { box-shadow: 0 4px 20px rgba(47,93,58,0.45), 0 0 0 18px rgba(47,93,58,0); }
-  }
-  .map-label {
-    background: var(--paper);
-    border-radius: 999px;
-    padding: 11px 22px;
-    font-size: 14px;
-    font-weight: 600;
-    box-shadow: 0 2px 14px rgba(26,20,16,0.12);
+  .map-label-text {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
     text-align: center;
   }
-  .map-sub {
-    font-size: 12px;
-    text-align: center;
-    opacity: 0.55;
-    font-weight: 500;
+  .map-sub-text { font-size: 13px; color: rgba(26,20,16,0.5); text-align: center; }
+  .map-open-link {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--leaf);
+    text-decoration: none;
   }
+  .map-open-link:hover { text-decoration: underline; }
 
   /* ── Leasing ─────────────────────────────────────── */
   .leasing-hero {
     background: var(--leaf-deep);
-    color: var(--paper);
+    color: var(--white);
     padding: 88px 40px;
   }
   .leasing-hero-inner {
-    max-width: 1180px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -892,9 +745,8 @@
     align-items: center;
   }
   .leasing-hero .eyebrow { color: var(--gold); }
-  .leasing-hero .eyebrow::before { background: var(--gold); }
-  .leasing-hero .section-title { color: var(--paper); margin-bottom: 16px; }
-  .leasing-hero .section-desc { color: var(--paper); opacity: 0.75; max-width: 100%; }
+  .leasing-hero .section-title { color: var(--white); margin-bottom: 16px; }
+  .leasing-hero .section-desc { color: var(--white); opacity: 0.75; max-width: 100%; }
   .leasing-highlights {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -904,7 +756,7 @@
   .leasing-hl {
     background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
+    border-radius: var(--radius);
     padding: 18px 20px;
   }
   .leasing-hl-num {
@@ -916,9 +768,8 @@
     margin-bottom: 4px;
   }
   .leasing-hl-label { font-size: 12.5px; opacity: 0.68; line-height: 1.4; }
-
   .leasing-contact-card {
-    background: var(--paper);
+    background: var(--white);
     border-radius: var(--radius-lg);
     padding: 40px;
     color: var(--ink);
@@ -953,8 +804,8 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    color: var(--leaf);
   }
-  .lcr-icon svg { color: var(--leaf); }
   .lcr-text { font-size: 14px; line-height: 1.5; }
   .lcr-text strong { display: block; font-weight: 600; font-size: 13px; opacity: 0.55; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
   .lcr-text a { color: var(--leaf); text-decoration: none; font-weight: 600; }
@@ -974,27 +825,52 @@
   }
   .leasing-cta-btn:hover { background: var(--leaf-deep); transform: translateY(-1px); }
 
-  .leasing-spaces {
-    padding: 88px 40px;
-    background: var(--paper-2);
+  .leasing-why { padding: 88px 40px; background: var(--white); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 52px;
   }
+  .why-card {
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--gray-1);
+  }
+  .why-icon {
+    width: 44px; height: 44px;
+    background: var(--leaf-light);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    color: var(--leaf);
+  }
+  .why-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .why-desc { font-size: 13.5px; opacity: 0.62; line-height: 1.6; }
+
+  .leasing-spaces { padding: 88px 40px; background: var(--gray-1); }
   .spaces-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin-top: 0;
   }
   .space-card {
-    background: var(--paper);
+    background: var(--white);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    box-shadow: var(--shadow);
   }
-  .space-card-header {
-    height: 8px;
-  }
+  .space-card-header { height: 8px; }
   .space-card-header.retail  { background: var(--sun); }
   .space-card-header.market  { background: var(--leaf); }
   .space-card-header.office  { background: var(--ocean); }
@@ -1009,7 +885,7 @@
     border-radius: 999px;
     margin-bottom: 4px;
   }
-  .space-type-badge.retail { background: #fde8d4; color: var(--sun-deep); }
+  .space-type-badge.retail { background: #fde8d4; color: #c45614; }
   .space-type-badge.market { background: var(--leaf-light); color: var(--leaf-deep); }
   .space-type-badge.office { background: #d4e6ed; color: var(--ocean); }
   .space-name {
@@ -1018,17 +894,8 @@
     font-weight: 700;
     line-height: 1.2;
   }
-  .space-sqft {
-    font-size: 13px;
-    opacity: 0.55;
-    font-weight: 500;
-  }
-  .space-desc {
-    font-size: 14px;
-    opacity: 0.65;
-    line-height: 1.6;
-    flex: 1;
-  }
+  .space-sqft { font-size: 13px; opacity: 0.55; font-weight: 500; }
+  .space-desc { font-size: 14px; opacity: 0.65; line-height: 1.6; flex: 1; }
   .space-features {
     list-style: none;
     display: flex;
@@ -1057,319 +924,160 @@
     justify-content: space-between;
     align-items: center;
   }
-  .space-avail {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
+  .space-avail { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
   .space-avail.open { color: var(--leaf); }
-  .space-avail.limited { color: var(--sun-deep); }
-  .space-inquire {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--leaf);
-    text-decoration: none;
-  }
+  .space-avail.limited { color: #c45614; }
+  .space-inquire { font-size: 13px; font-weight: 700; color: var(--leaf); text-decoration: none; }
   .space-inquire:hover { text-decoration: underline; }
 
-  .leasing-why {
-    padding: 88px 40px;
-  }
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 52px;
-  }
-  .why-card {
-    padding: 28px 24px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--paper);
-  }
-  .why-icon {
-    width: 44px; height: 44px;
-    background: var(--leaf-light);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 16px;
-  }
-  .why-icon svg { color: var(--leaf); }
-  .why-title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-  .why-desc { font-size: 13.5px; opacity: 0.62; line-height: 1.6; }
-
-  /* ── Footer ───────────────────────────────────────── */
+  /* ── Footer ──────────────────────────────────────── */
   .footer {
     background: var(--ink);
-    color: var(--paper);
-    padding: 68px 40px 32px;
+    color: rgba(255,255,255,0.65);
+    padding: 52px 40px 32px;
   }
   .footer-inner {
-    max-width: 1180px;
+    max-width: 1200px;
     margin: 0 auto;
   }
   .footer-top {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 52px;
-    padding-bottom: 52px;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 28px;
   }
-  .footer-brand img {
-    height: 52px;
-    width: auto;
-    margin-bottom: 16px;
-    display: block;
-    filter: brightness(0) invert(1);
-  }
-  .footer-tagline {
-    font-size: 15px;
-    opacity: 0.6;
-    max-width: 230px;
-    line-height: 1.65;
-    margin-bottom: 22px;
-  }
-  .footer-social { display: flex; gap: 12px; }
-  .footer-social a {
-    width: 38px; height: 38px;
-    border: 1px solid rgba(255,255,255,0.18);
+  .footer-logo { height: 36px; width: auto; object-fit: contain; margin-bottom: 14px; display: block; filter: brightness(0) invert(1); }
+  .footer-tagline { font-size: 13px; line-height: 1.6; max-width: 260px; margin-bottom: 20px; }
+  .footer-social { display: flex; gap: 10px; }
+  .social-btn {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(255,255,255,0.65);
-    font-size: 13px;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: border-color 0.18s, background 0.18s;
   }
-  .footer-social a:hover {
-    border-color: rgba(255,255,255,0.5);
-    color: #fff;
-    background: rgba(255,255,255,0.08);
-  }
+  .social-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); }
+  .social-btn svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.7); }
   .footer-col-title {
     font-size: 11px;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
     font-weight: 700;
-    opacity: 0.42;
-    margin-bottom: 18px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 16px;
   }
-  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-  .footer-links a {
-    color: rgba(255,255,255,0.65);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.15s;
-  }
+  .footer-info { display: flex; flex-direction: column; gap: 8px; }
+  .footer-info span { font-size: 13px; }
+  .footer-info a { color: rgba(255,255,255,0.65); text-decoration: none; }
+  .footer-info a:hover { color: #fff; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.65); text-decoration: none; }
   .footer-links a:hover { color: #fff; }
   .footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 24px;
-    font-size: 13px;
-    opacity: 0.38;
-  }
-
-  /* ── Social icon links ───────────────────────────── */
-  .social-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: inherit;
-    transition: opacity 0.15s;
-    line-height: 1;
-  }
-  .topbar .social-icon { opacity: 0.75; }
-  .topbar .social-icon:hover { opacity: 1; color: #fff; }
-  .footer-social .social-icon {
-    width: 38px; height: 38px;
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 50%;
-    color: rgba(255,255,255,0.65);
-    transition: all 0.2s;
-  }
-  .footer-social .social-icon:hover {
-    border-color: rgba(255,255,255,0.5);
-    color: #fff;
-    background: rgba(255,255,255,0.08);
-  }
-
-  /* ── Marketplace Feature — split full-bleed layout ─ */
-  .market-feature {
-    display: flex;
-    min-height: 620px;
-  }
-  .market-left {
-    flex: 1.05;
-    background: var(--leaf-deep);
-    color: var(--paper);
-    padding: 88px 56px 88px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  .market-left-inner { max-width: 520px; width: 100%; }
-  .market-eyebrow { color: var(--gold); }
-  .market-eyebrow::before { background: var(--gold); }
-  .market-title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(30px, 3.8vw, 50px);
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
-    margin-bottom: 18px;
-    color: var(--paper);
-  }
-  .market-title em { font-style: italic; font-weight: 500; color: var(--gold); }
-  .market-desc {
-    font-size: 16px;
-    opacity: 0.76;
-    line-height: 1.65;
-    margin-bottom: 28px;
-  }
-  .market-stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 32px;
-    padding-top: 28px;
-    border-top: 1px solid rgba(255,255,255,0.12);
-  }
-  .market-stat {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
-    padding: 16px 18px;
-  }
-  .market-stat-num {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .market-stat-label { font-size: 12px; opacity: 0.68; line-height: 1.4; }
-
-  .market-right {
-    flex: 0.95;
-    background: var(--paper-2);
-    padding: 88px 40px 88px 56px;
-    display: flex;
-    align-items: center;
-  }
-  .market-right-inner { max-width: 500px; width: 100%; }
-  .market-vendor-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-  .mvendor-cat {
-    background: var(--paper);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px;
-    overflow: hidden;
-  }
-  .mvendor-cat-icon { font-size: 22px; margin-bottom: 8px; display: block; }
-  .mvendor-cat-name {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--ink);
-  }
-  .mvendor-list { list-style: none; }
-  .mvendor-list li {
-    font-size: 15px;
-    padding: 9px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    flex-wrap: wrap;
     gap: 8px;
-    line-height: 1.4;
   }
-  .mvendor-list li:last-child { border-bottom: none; padding-bottom: 0; }
-  .mvendor-list li span { flex: 1; font-weight: 500; }
-  .mvendor-list a {
-    color: var(--leaf);
-    font-size: 13.5px;
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .mvendor-list a:hover { text-decoration: underline; }
 
-  /* ── Responsive ───────────────────────────────────── */
+  /* ── Construction banner ─────────────────────────── */
+  .construction-banner {
+    background: #fffbea;
+    border-top: 1px solid #f0d96b;
+    border-bottom: 3px solid #f0d96b;
+    padding: 24px 40px 20px;
+    text-align: center;
+  }
+  .cb-setup {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #9a7c3a;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+  .cb-punchline {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--leaf-deep);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .cb-tag {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--sun);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── Responsive ──────────────────────────────────── */
   @media (max-width: 1024px) {
-    .hero-inner { gap: 40px; }
-    .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
-    .footer-brand { grid-column: span 2; }
+    .vendor-photo { width: 160px; }
+    .mkt-cat-photo { width: 140px; }
   }
-
   @media (max-width: 900px) {
-    .topbar { padding: 8px 20px; font-size: 12px; }
-    .topbar-right { gap: 14px; }
-    .nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .hero { padding: 60px 20px 52px; }
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-photo { display: none; }
-    .hero-stats { grid-template-columns: repeat(3,1fr); }
-    .hero-stat + .hero-stat { padding-left: 16px; }
-    .section { padding: 60px 20px; }
-    .market-feature { flex-direction: column; }
-    .market-left { padding: 60px 20px; justify-content: flex-start; }
-    .market-right { padding: 60px 20px; }
-    .market-left-inner, .market-right-inner { max-width: 100%; }
-    .market-vendor-grid { grid-template-columns: 1fr 1fr; }
-    .restaurant-grid { grid-template-columns: 1fr 1fr; }
-    .vendor-grid { grid-template-columns: 1fr 1fr; }
-    .events-grid { grid-template-columns: 1fr; }
+    .nav { padding: 0 24px; gap: 16px; }
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 96px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      padding: 8px 24px 20px;
+      gap: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { border-bottom: 1px solid var(--border); }
+    .nav-links a { display: block; padding: 14px 0; font-size: 16px; opacity: 1; }
+    .hero { height: 80vh; min-height: 500px; }
+    .hero-content { padding: 0 24px 52px; }
+    .tabs-strip { padding: 0 24px; overflow-x: auto; }
+    .section { padding: 52px 24px; }
+    .vendor-grid { grid-template-columns: 1fr; }
+    .shops-grid { grid-template-columns: 1fr; }
+    .highlight-strip { padding: 40px 24px; }
+    .highlight-strip-inner { flex-direction: column; gap: 28px; }
     .visit-grid { grid-template-columns: 1fr; }
+    .footer { padding: 40px 24px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .leasing-hero { padding: 60px 24px; }
     .leasing-hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .leasing-hero { padding: 60px 20px; }
-    .leasing-spaces { padding: 60px 20px; }
-    .leasing-why { padding: 60px 20px; }
-    .spaces-grid { grid-template-columns: 1fr; }
+    .leasing-why { padding: 60px 24px; }
     .why-grid { grid-template-columns: 1fr 1fr; }
-    .map-wrap { height: 300px; }
-    .footer { padding: 52px 20px 28px; }
-    .footer-top { grid-template-columns: 1fr 1fr; }
-    .footer-brand { grid-column: span 2; }
+    .leasing-spaces { padding: 60px 24px; }
+    .spaces-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .vendor-photo { width: 120px; }
+    .shops-grid { grid-template-columns: 1fr; }
+    .shop-card-photo { width: 130px; }
+    .hero-stats { flex-wrap: wrap; }
+    .footer-top { grid-template-columns: 1fr; }
+    .hs-stats { gap: 24px; }
   }
 
-  @media (max-width: 600px) {
-    .restaurant-grid { grid-template-columns: 1fr; }
-    .vendor-grid { grid-template-columns: 1fr; }
-    .market-vendor-grid { grid-template-columns: 1fr; }
-    .shops-grid { grid-template-columns: 1fr 1fr; }
-    .hero-stats { grid-template-columns: 1fr 1fr; }
-    .hero-stat:last-child { border-left: none; padding-left: 0; }
-    .footer-top { grid-template-columns: 1fr; }
-    .footer-brand { grid-column: auto; }
-    .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
-  }
 </style>
-<script>history.scrollRestoration = 'manual';</script>
+<script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script>
 </head>
 <body>
-
-<!-- ─── Mockup Banner ──────────────────────────────────── -->
-<div class="mockup-banner">
-  <span>✦ Concept Mockup</span> — City Square Shopping Center
-</div>
 
 <!-- ─── Top Bar ────────────────────────────────────────── -->
 <div class="topbar">
@@ -1381,340 +1089,320 @@
     <span>Marketplace: 8am – 4pm Daily</span>
     <span>1199 Dillingham Blvd, Honolulu, HI 96817</span>
   </div>
-  <div class="topbar-right">
-    <a href="#leasing">Leasing</a>
-    <span class="topbar-divider"></span>
-    <a href="#leasing">Management</a>
-    <span class="topbar-divider"></span>
-    <a href="https://www.instagram.com/citysquarehi" class="social-icon" aria-label="Instagram" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-    <a href="https://www.facebook.com/CitySquareHI" class="social-icon" aria-label="Facebook" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-  </div>
 </div>
 
-<!-- ─── Navigation ────────────────────────────────────── -->
+<!-- ─── Navigation ─────────────────────────────────────── -->
 <nav class="nav">
   <a href="#" class="nav-logo">
     <img src="photo/logo/logo2.jpg" alt="City Square Shopping Center">
   </a>
   <ul class="nav-links">
     <li><a href="#marketplace">Marketplace</a></li>
-    <li><a href="#eat">Eat</a></li>
-    <li><a href="#shops">Shops & Services</a></li>
+    <li><a href="#eat">Restaurants</a></li>
+    <li><a href="#shops">Shops</a></li>
     <li><a href="#visit">Visit</a></li>
-    <li><a href="#events">Events</a></li>
+    <li><a href="#leasing">Leasing</a></li>
   </ul>
-  <a href="https://maps.google.com/?q=1199+Dillingham+Blvd+Honolulu+HI" class="btn-primary" target="_blank">Get Directions</a>
+  <a href="https://maps.google.com/?q=1199+Dillingham+Blvd+Honolulu+HI" class="nav-cta" target="_blank">Get Directions</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- ─── Hero ──────────────────────────────────────────── -->
+<!-- ─── Hero ───────────────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-eyebrow">City Square Marketplace · Kalihi, Hawaiʻi</div>
-      <h1 class="hero-title">
-        Fresh Every Morning,<br>
-        <em>Right Here</em><br>
-        in Kalihi
-      </h1>
-      <p class="hero-subtitle">
-        Local farmers, fishermen, and vendors bring the best of Hawaiʻi straight to your table — every day, indoors, with free parking. Plus 14 restaurants and everything your neighborhood needs.
-      </p>
-      <div class="hero-actions">
-        <a href="#marketplace" class="btn-primary">Visit the Marketplace</a>
-        <a href="#eat" class="btn-ghost">Explore Restaurants</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="stat-num">40+</div>
-          <div class="stat-label">Shops &amp; Restaurants</div>
-        </div>
-        <div class="hero-stat">
-          <div class="stat-num">300</div>
-          <div class="stat-label">Free Parking Stalls</div>
-        </div>
-        <div class="hero-stat">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Solar Powered</div>
-        </div>
-      </div>
+  <video class="hero-video hero-video-desktop" autoplay muted loop playsinline>
+    <source src="photo/city_square_desktop_1080p.mp4" type="video/mp4">
+  </video>
+  <video class="hero-video hero-video-mobile" autoplay muted loop playsinline>
+    <source src="photo/city_square_mobile_720p.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">City Square · Kalihi, Hawaiʻi</div>
+
+    <p class="hero-sub">Fresh produce, local eats, and everyday essentials — all under one roof in the heart of Honolulu.</p>
+    <div class="hero-actions">
+      <a href="#marketplace" class="btn-primary">Visit the Marketplace</a>
+      <a href="#eat" class="btn-outline">Explore Restaurants</a>
     </div>
-    <div class="hero-photo">
-      <img src="photo/market%20place/veggie2.jpg" alt="City Square Indoor Marketplace — fresh local produce daily">
-      <div class="hero-photo-label">Indoor Marketplace · Open Daily 8am – 4pm</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Shops &amp; Restaurants</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">Free</div>
+        <div class="stat-label">300 Parking Stalls</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">Daily</div>
+        <div class="stat-label">Marketplace Open 8am–4pm</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ─── Marquee ────────────────────────────────────────── -->
-<div class="marquee-bar" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">Chef's Ramen</span>
-    <span class="marquee-item">Kamehameha Bakery</span>
-    <span class="marquee-item">Young's Fish Market</span>
-    <span class="marquee-item">Shaka Shaka Tea</span>
-    <span class="marquee-item">Utage Restaurant</span>
-    <span class="marquee-item">Thai Village III</span>
-    <span class="marquee-item">Koala Moa</span>
-    <span class="marquee-item">Jay's Café &amp; Sushi</span>
-    <span class="marquee-item">Double Three Creamery</span>
-    <span class="marquee-item">Ubae Ube Desserts</span>
-    <span class="marquee-item">Sugoi Restaurant</span>
-    <span class="marquee-item">Thang's Coffee</span>
-    <span class="marquee-item">Fresh Produce Daily</span>
-    <span class="marquee-item">Local Seafood</span>
-    <span class="marquee-item">Free Parking</span>
-    <!-- duplicate for seamless loop -->
-    <span class="marquee-item">Chef's Ramen</span>
-    <span class="marquee-item">Kamehameha Bakery</span>
-    <span class="marquee-item">Young's Fish Market</span>
-    <span class="marquee-item">Shaka Shaka Tea</span>
-    <span class="marquee-item">Utage Restaurant</span>
-    <span class="marquee-item">Thai Village III</span>
-    <span class="marquee-item">Koala Moa</span>
-    <span class="marquee-item">Jay's Café &amp; Sushi</span>
-    <span class="marquee-item">Double Three Creamery</span>
-    <span class="marquee-item">Ubae Ube Desserts</span>
-    <span class="marquee-item">Sugoi Restaurant</span>
-    <span class="marquee-item">Thang's Coffee</span>
-    <span class="marquee-item">Fresh Produce Daily</span>
-    <span class="marquee-item">Local Seafood</span>
-    <span class="marquee-item">Free Parking</span>
+<!-- ─── Category Tabs ──────────────────────────────────── -->
+<div class="tabs-strip">
+  <div class="tabs-inner">
+    <a href="#" class="tab active">All</a>
+    <a href="#marketplace" class="tab">Marketplace</a>
+    <a href="#eat" class="tab">Restaurants</a>
+    <a href="#shops" class="tab">Shops &amp; Services</a>
+  </div>
+</div>
+
+<!-- ─── Marketplace Highlight Strip ───────────────────── -->
+<div class="highlight-strip" id="marketplace">
+  <div class="highlight-strip-inner">
+    <div class="hs-text">
+      <div class="hs-eyebrow">Indoor Grocery Market</div>
+      <h2 class="hs-title">Fresh Every Morning,<br><em>Right Here in Kalihi</em></h2>
+      <p class="hs-sub">Local farmers, fishermen, and vendors bring their best produce, seafood, and specialty goods to our indoor marketplace — every single day.</p>
+    </div>
+    <div class="hs-stats">
+      <div class="hs-stat">
+        <div class="hs-stat-num">20+</div>
+        <div class="hs-stat-label">Marketplace Vendors</div>
+      </div>
+      <div class="hs-stat">
+        <div class="hs-stat-num">8am</div>
+        <div class="hs-stat-label">Opens Daily</div>
+      </div>
+      <div class="hs-stat">
+        <div class="hs-stat-num">100%</div>
+        <div class="hs-stat-label">Solar Powered</div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- ─── Construction Notice ──────────────────────────────── -->
-<div class="construction-notice">
-  <p class="cn-setup">Dillingham's been under construction since approximately the Jurassic period.</p>
-  <p class="cn-punchline">The cones no move. Our fresh produce did — every morning.</p>
-  <p class="cn-tag">See you folks there.</p>
+<div class="construction-banner">
+  <p class="cb-setup">Dillingham's been under construction since approximately the Jurassic period.</p>
+  <p class="cb-punchline">The cones no move. Our fresh produce did — every morning.</p>
+  <p class="cb-tag">See you folks there.</p>
 </div>
 
-<!-- ─── Marketplace ────────────────────────────────────── -->
-<section id="marketplace" class="market-feature">
-  <div class="market-left" style="background-image: linear-gradient(rgba(29,61,36,0.87), rgba(29,61,36,0.87)), url('photo/market%20place/veggie2.jpg'); background-size: cover; background-position: center;">
-    <div class="market-left-inner">
-      <div class="eyebrow market-eyebrow">Indoor Farmers Market</div>
-      <h2 class="market-title">
-        The Heart of<br><em>City Square</em>
-      </h2>
-      <p class="market-desc">
-        Our air-conditioned indoor marketplace is where Kalihi comes to shop. Fresh local produce, daily-caught seafood, and quality meats — from 13+ local vendors, open every single day.
-      </p>
-      <div class="hours-badge">
-        <span class="dot"></span>
-        Open Daily · Monday – Sunday · 8:00 am – 4:00 pm
-      </div>
-      <div class="market-stats-grid">
-        <div class="market-stat">
-          <div class="market-stat-num">13+</div>
-          <div class="market-stat-label">Local Vendors</div>
-        </div>
-        <div class="market-stat">
-          <div class="market-stat-num">7</div>
-          <div class="market-stat-label">Days a Week</div>
-        </div>
-        <div class="market-stat">
-          <div class="market-stat-num">AC</div>
-          <div class="market-stat-label">Climate Controlled</div>
-        </div>
-        <div class="market-stat">
-          <div class="market-stat-num">300</div>
-          <div class="market-stat-label">Free Parking Stalls</div>
-        </div>
-      </div>
+<!-- ─── Marketplace Vendors ────────────────────────────── -->
+<section class="section mkt-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Shop the Market</div>
+      <h2 class="section-title">Marketplace Vendors</h2>
+      <p class="section-desc">Find fresh produce, seafood, meats, and specialty goods from our local vendors inside the marketplace.</p>
     </div>
-  </div>
-  <div class="market-right">
-    <div class="market-right-inner">
-      <div class="market-vendor-grid">
-        <div class="mvendor-cat">
-          <div class="mvendor-cat-name">Fresh Produce</div>
-          <ul class="mvendor-list">
-            <li><span>Farm Life</span><a href="tel:8083971991">(808) 397-1991</a></li>
-            <li><span>Island Green Produce</span><a href="tel:8084972219">(808) 497-2219</a></li>
-            <li><span>Marissa's Produce</span><a href="tel:8085205612">(808) 520-5612</a></li>
-          </ul>
-          <div class="mvendor-more">+4 more vendors</div>
-        </div>
-        <div class="mvendor-cat">
-          <div class="mvendor-cat-name">Seafood</div>
-          <ul class="mvendor-list">
-            <li><span>7 Sisters Market</span><a href="tel:8088001641">(808) 800-1641</a></li>
-            <li><span>Brian's Seafood Market</span><a href="tel:8085546872">(808) 554-6872</a></li>
-            <li><span>Marivic Seafood &amp; Meats</span><a href="tel:8087418127">(808) 741-8127</a></li>
-          </ul>
-          <div class="mvendor-more">+1 more vendor</div>
-        </div>
-        <div class="mvendor-cat">
-          <div class="mvendor-cat-name">Meat &amp; More</div>
-          <ul class="mvendor-list">
-            <li><span>7 Sisters Market</span><a href="tel:8084458276">(808) 445-8276</a></li>
-            <li><span>Marivic Seafood &amp; Meats</span><a href="tel:8087418127">(808) 741-8127</a></li>
-            <li><span>Pinoy One</span><a href="tel:8083813235">(808) 381-3235</a></li>
-          </ul>
-        </div>
-        <div class="mvendor-cat">
-          <div class="mvendor-cat-name">Retail &amp; Specialty</div>
-          <ul class="mvendor-list">
-            <li><span>AFrames Tokyo</span><a href="tel:8086791655">(808) 679-1655</a></li>
-            <li><span>Pinoy One</span><a href="tel:8083813235">(808) 381-3235</a></li>
-            <li><span>Ukay-Ukay</span><a href="tel:8082820121">(808) 282-0121</a></li>
-          </ul>
+    <div class="vendor-grid">
+
+      <div class="vendor-card">
+        <img src="photo/market%20place/veggietable.jpg" alt="Farm Life" class="vendor-photo">
+        <div class="vendor-body">
+          <div class="vendor-category">Fresh Produce</div>
+          <div class="vendor-name">Farm Life</div>
+          <div class="vendor-desc">Locally grown vegetables, fruits, and farm-fresh goods — straight from the farm to your table every morning.</div>
+          <div class="cta-row">
+            <a href="tel:8083971991" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
         </div>
       </div>
+
+      <div class="vendor-card">
+        <img src="photo/market%20place/seafood.jpg" alt="Brian's Seafood Market" class="vendor-photo">
+        <div class="vendor-body">
+          <div class="vendor-category">Seafood</div>
+          <div class="vendor-name">Brian's Seafood Market</div>
+          <div class="vendor-desc">Fresh catch daily — whole fish, fillets, and shellfish sourced from local Hawaii waters and beyond.</div>
+          <div class="cta-row">
+            <a href="tel:8085546872" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vendor-card">
+        <img src="photo/market%20place/seafood.jpg" alt="Marivic Seafood & Meats" class="vendor-photo" style="object-position: right center;">
+        <div class="vendor-body">
+          <div class="vendor-category">Meat &amp; More</div>
+          <div class="vendor-name">Marivic Seafood &amp; Meats</div>
+          <div class="vendor-desc">Quality cuts of pork, beef, and poultry alongside fresh seafood selections — your one-stop protein shop.</div>
+          <div class="cta-row">
+            <a href="tel:8087418127" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vendor-card">
+        <img src="photo/market%20place/knife.jpg" alt="AFrames Tokyo" class="vendor-photo" style="object-position: center top;">
+        <div class="vendor-body">
+          <div class="vendor-category">Retail &amp; Specialty</div>
+          <div class="vendor-name">AFrames Tokyo</div>
+          <div class="vendor-desc">Japanese kitchen knives, cookware, and specialty culinary goods — a hidden gem inside the marketplace.</div>
+          <div class="cta-row">
+            <a href="tel:8086791655" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="see-all-wrap">
+      <a href="#" class="see-all-link">See all 20+ marketplace vendors →</a>
     </div>
   </div>
 </section>
 
 <!-- ─── Restaurants ────────────────────────────────────── -->
-<section id="eat" class="section">
+<section class="section" id="eat">
   <div class="section-inner">
     <div class="section-header">
       <div class="eyebrow">Ono Grinds</div>
       <h2 class="section-title">Eat. Gather. Enjoy.</h2>
       <p class="section-desc">From Japanese comfort food to Hawaiian classics, our restaurants bring the flavors of the world right here to Kalihi.</p>
     </div>
-    <div class="market-vendor-grid">
+    <div class="vendor-grid">
 
-      <div class="mvendor-cat">
-        <div class="mvendor-cat-name">Restaurants</div>
-        <ul class="mvendor-list">
-          <li><span>Chef's Ramen</span><a href="tel:8088426660">(808) 842-6660</a></li>
-          <li><span>Kamehameha Bakery</span><a href="tel:8088455831">(808) 845-5831</a></li>
-          <li><span>Young's Fish Market</span><a href="tel:8088414885">(808) 841-4885</a></li>
-        </ul>
-        <div class="mvendor-more">+11 more restaurants</div>
+      <div class="vendor-card">
+        <img src="photo/market%20place/food1.jpg" alt="Chef's Ramen" class="vendor-photo">
+        <div class="vendor-body">
+          <div class="vendor-category">Japanese</div>
+          <div class="vendor-name">Chef's Ramen</div>
+          <div class="vendor-desc">Tonkotsu ramen, Japanese curry, and delicious comfort food with a local flare.</div>
+          <div class="cta-row">
+            <a href="tel:8088426660" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-menu">View Menu</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vendor-card">
+        <img src="photo/market%20place/youngs.jpg" alt="Young's Fish Market" class="vendor-photo">
+        <div class="vendor-body">
+          <div class="vendor-category">Hawaiian</div>
+          <div class="vendor-name">Young's Fish Market</div>
+          <div class="vendor-desc">Ono Hawaiian dishes — laulau, poke, and local-style plate lunches done right.</div>
+          <div class="cta-row">
+            <a href="tel:8088414885" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-menu">View Menu</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vendor-card">
+        <img src="photo/market%20place/kamehameha.jpg" alt="Kamehameha Bakery" class="vendor-photo" style="object-position: center top;">
+        <div class="vendor-body">
+          <div class="vendor-category">Bakery</div>
+          <div class="vendor-name">Kamehameha Bakery</div>
+          <div class="vendor-desc">Famous glazed poi and haupia malasadas — a Hawaiʻi institution since forever.</div>
+          <div class="cta-row">
+            <a href="tel:8088455831" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-menu">View Menu</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vendor-card">
+        <img src="photo/market%20place/food2.jpg" alt="Koala Moa Rotisserie Chicken" class="vendor-photo">
+        <div class="vendor-body">
+          <div class="vendor-category">Hawaiian Local</div>
+          <div class="vendor-name">Koala Moa Rotisserie Chicken</div>
+          <div class="vendor-desc">Juicy, golden rotisserie chicken — simple, satisfying, and always fresh out of the rotisserie.</div>
+          <div class="cta-row">
+            <a href="tel:8085236701" class="cta-btn cta-call">Call</a>
+            <a href="#" class="cta-btn cta-menu">View Menu</a>
+            <a href="#" class="cta-btn cta-more">Learn More</a>
+          </div>
+        </div>
       </div>
 
     </div>
-    <div class="section-see-all"><a href="#" class="see-all-link">See all 14 restaurants →</a></div>
+    <div class="see-all-wrap">
+      <a href="#" class="see-all-link">See all 14 restaurants →</a>
+    </div>
   </div>
 </section>
 
 <!-- ─── Shops & Services ───────────────────────────────── -->
-<section id="shops" class="section shops-section">
+<section class="section" id="shops" style="background: var(--gray-1);">
   <div class="section-inner">
     <div class="section-header">
       <div class="eyebrow">One-Stop Shopping</div>
       <h2 class="section-title">Shops &amp; Services</h2>
       <p class="section-desc">From haircuts to health, e-bikes to insurance — everything your neighborhood needs is right here at City Square.</p>
     </div>
-    <div class="market-vendor-grid">
+    <div class="shops-grid">
 
-      <div class="mvendor-cat">
-        <div class="mvendor-cat-name">Shops &amp; Services</div>
-        <ul class="mvendor-list">
-          <li><span>Aloha E-Bikes</span><a href="tel:8083972453">(808) 397-2453</a></li>
-          <li><span>Cloud 9 Salon &amp; Spa</span><a href="tel:8084848822">(808) 484-8822</a></li>
-          <li><span>Kalihi Pet Center</span><a href="tel:8088474434">(808) 847-4434</a></li>
-        </ul>
-        <div class="mvendor-more">+17 more shops &amp; services</div>
+      <div class="shop-card">
+        <img src="photo/market%20place/ebikes.jpg" alt="Aloha E-Bikes" class="shop-card-photo">
+        <div class="shop-card-body">
+          <div class="shop-cat">Retail</div>
+          <div class="shop-name">Aloha E-Bikes</div>
+          <p class="shop-desc">Electric bikes, scooters, and gear — explore Honolulu the easy way. Sales, rentals, and repairs available.</p>
+          <a href="#" class="shop-learn">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="photo/market%20place/salon.jpg" alt="Cloud 9 Salon & Spa" class="shop-card-photo">
+        <div class="shop-card-body">
+          <div class="shop-cat">Beauty</div>
+          <div class="shop-name">Cloud 9 Salon &amp; Spa</div>
+          <p class="shop-desc">Full-service hair salon and spa offering cuts, color, treatments, and relaxing spa services for the whole family.</p>
+          <a href="#" class="shop-learn">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="photo/market%20place/store1.jpg" alt="Kalihi Pet Center" class="shop-card-photo" style="object-position: center top;">
+        <div class="shop-card-body">
+          <div class="shop-cat">Pets</div>
+          <div class="shop-name">Kalihi Pet Center</div>
+          <p class="shop-desc">Your neighborhood pet shop for food, supplies, accessories, and advice — keeping your furry ohana happy and healthy.</p>
+          <a href="#" class="shop-learn">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="photo/market%20place/ebikes.jpg" alt="Aloha Golf Center" class="shop-card-photo">
+        <div class="shop-card-body">
+          <div class="shop-cat">Recreation</div>
+          <div class="shop-name">Aloha Golf Center</div>
+          <p class="shop-desc">Driving range, club rentals, and golf gear for players of all skill levels — tee up right here in Kalihi.</p>
+          <a href="#" class="shop-learn">Learn More →</a>
+        </div>
       </div>
 
     </div>
-    <div class="section-see-all"><a href="#" class="see-all-link">See all 20+ shops &amp; services →</a></div>
-  </div>
-</section>
-
-<!-- ─── Events ───────────────────────────────────────────── -->
-<section id="events" class="section" style="background: var(--paper-2);">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="eyebrow">What's Happening</div>
-      <h2 class="section-title">Upcoming Events</h2>
-      <p class="section-desc">From live music to cooking demos — there's always something going on at City Square.</p>
-    </div>
-    <div class="events-grid">
-
-      <!-- Event 1 -->
-      <div class="event-card">
-        <div class="event-photo">
-          <img src="photo/market%20place/veggie2.jpg" alt="Summer Night Market">
-          <div class="event-date-badge">
-            <span class="event-date-month">Jun</span>
-            <span class="event-date-day">14</span>
-          </div>
-        </div>
-        <div class="event-body">
-          <span class="event-tag">Marketplace</span>
-          <div class="event-title">Summer Night Market</div>
-          <p class="event-desc">Stay late for our special evening market — extended vendor hours, live Hawaiian music, and food samplings from our marketplace vendors. A great night out for the whole family.</p>
-          <div class="event-meta">
-            <span>Saturday, June 14, 2026</span>
-            <span>5:00 pm – 9:00 pm</span>
-            <span>Main Marketplace · 1199 Dillingham Blvd</span>
-          </div>
-          <a href="#" class="event-cta">Learn More →</a>
-        </div>
-      </div>
-
-      <!-- Event 2 -->
-      <div class="event-card">
-        <div class="event-photo">
-          <img src="photo/market%20place/food1.jpg" alt="Taste of Kalihi Food Festival">
-          <div class="event-date-badge">
-            <span class="event-date-month">Jul</span>
-            <span class="event-date-day">19</span>
-          </div>
-        </div>
-        <div class="event-body">
-          <span class="event-tag">Food Festival</span>
-          <div class="event-title">Taste of Kalihi</div>
-          <p class="event-desc">Sample dishes from all 14 of our restaurants in one afternoon. Each restaurant offers a special tasting plate — the perfect way to discover your next favorite spot right here in the neighborhood.</p>
-          <div class="event-meta">
-            <span>Saturday, July 19, 2026</span>
-            <span>11:00 am – 4:00 pm</span>
-            <span>City Square Courtyard</span>
-          </div>
-          <a href="#" class="event-cta">Learn More →</a>
-        </div>
-      </div>
-
-      <!-- Event 3 -->
-      <div class="event-card">
-        <div class="event-photo">
-          <img src="photo/market%20place/salon.jpg" alt="Back to School Community Day">
-          <div class="event-date-badge" style="background: var(--leaf);">
-            <span class="event-date-month">Aug</span>
-            <span class="event-date-day">8</span>
-          </div>
-        </div>
-        <div class="event-body">
-          <span class="event-tag">Community</span>
-          <div class="event-title">Back to School Community Day</div>
-          <p class="event-desc">Kick off the new school year with deals across the shopping center, free keiki activities, and giveaways from our tenants. Bring the kids and enjoy a day of fun before classes begin.</p>
-          <div class="event-meta">
-            <span>Saturday, August 8, 2026</span>
-            <span>10:00 am – 3:00 pm</span>
-            <span>City Square · All Locations</span>
-          </div>
-          <a href="#" class="event-cta">Learn More →</a>
-        </div>
-      </div>
-
+    <div class="see-all-wrap">
+      <a href="#" class="see-all-link">See all 20+ shops &amp; services →</a>
     </div>
   </div>
 </section>
 
 <!-- ─── Visit ──────────────────────────────────────────── -->
-<section id="visit" class="section">
+<section class="section visit-section" id="visit">
   <div class="section-inner">
     <div class="section-header">
       <div class="eyebrow">Find Us</div>
       <h2 class="section-title">Visit City Square</h2>
       <p class="section-desc">Two convenient locations in the heart of Kalihi with ample free parking at both.</p>
-      <div class="visit-construction-notice">
-        <p class="vcn-setup">Dillingham's been under construction since approximately the Jurassic period.</p>
-        <p class="vcn-punchline">The cones no move. Our fresh produce did — every morning.</p>
-        <p class="vcn-tag">See you folks there.</p>
-      </div>
+    </div>
+
+    <div class="visit-joke">
+      <p class="vj-setup">Dillingham's been under construction since approximately the Jurassic period.</p>
+      <p class="vj-punchline">The cones no move. Our fresh produce did — every morning.</p>
+      <p class="vj-tag">See you folks there.</p>
     </div>
 
     <div class="visit-grid">
-      <div class="loc-cards">
-
-        <div class="loc-card">
-          <div class="loc-badge">Main Location</div>
+      <div>
+        <div class="loc-block">
+          <div class="loc-label">Main Location</div>
           <div class="loc-address">1199 Dillingham Blvd<br>Honolulu, HI 96817</div>
           <table class="hours-tbl">
             <tr><td>Marketplace</td><td>Mon – Sun · 8:00 am – 4:00 pm</td></tr>
@@ -1724,40 +1412,35 @@
           <div class="loc-meta">
             <span>300 free parking stalls</span>
             <span>100% solar powered</span>
-            <span>Management: <a href="tel:8088326999" style="color:var(--leaf);font-weight:600;">(808) 832-6999</a></span>
+            <span>Management: <a href="tel:8088326999">(808) 832-6999</a></span>
           </div>
           <a href="https://maps.google.com/?q=1199+Dillingham+Blvd+Honolulu+HI" class="dir-link" target="_blank">→ Open in Google Maps</a>
         </div>
 
-        <div class="loc-card">
-          <div class="loc-badge annex">Annex Location</div>
+        <hr class="loc-divider">
+
+        <div class="loc-block">
+          <div class="loc-label annex">Annex Location</div>
           <div class="loc-address">1287 Kalani St<br>Honolulu, HI 96817</div>
           <div class="loc-meta">
             <span>Professional offices &amp; services</span>
-            <span>Albert K.C. Yuen &amp; Paul C.M. Wong CPAs</span>
-            <span>Herbert Chock &amp; Associates</span>
-            <span>Hawaii Asphalt Paving Industry</span>
-            <span>SMARTraining Hawaii · Poncho's Solar · LN's Hair Salon · Your CBD Store</span>
+            <span>SMARTraining Hawaii · Poncho's Solar · LN's Hair Salon</span>
           </div>
           <a href="https://maps.google.com/?q=1287+Kalani+St+Honolulu+HI" class="dir-link" target="_blank">→ Open in Google Maps</a>
         </div>
-
       </div>
 
-      <div class="map-wrap">
-        <div class="map-content">
-          <div class="map-pin"></div>
-          <div class="map-label">City Square Shopping Center</div>
-          <div class="map-sub">1199 Dillingham Blvd · Honolulu, HI 96817</div>
-        </div>
+      <div class="map-placeholder">
+        <div class="map-pin-icon"></div>
+        <div class="map-label-text">City Square Shopping Center</div>
+        <div class="map-sub-text">1199 Dillingham Blvd · Honolulu, HI 96817</div>
+        <a href="https://maps.google.com/?q=1199+Dillingham+Blvd+Honolulu+HI" class="map-open-link" target="_blank">Open in Google Maps →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── Leasing ──────────────────────────────────────────── -->
-
-<!-- Intro + Contact -->
+<!-- ─── Leasing: Intro + Contact ──────────────────────── -->
 <section id="leasing" class="leasing-hero">
   <div class="leasing-hero-inner">
     <div>
@@ -1829,7 +1512,7 @@
   </div>
 </section>
 
-<!-- Why Lease Here -->
+<!-- ─── Leasing: Why City Square ───────────────────────── -->
 <section class="leasing-why">
   <div class="section-inner">
     <div class="section-header">
@@ -1870,7 +1553,7 @@
   </div>
 </section>
 
-<!-- Available Spaces -->
+<!-- ─── Leasing: Available Spaces ─────────────────────── -->
 <section class="leasing-spaces">
   <div class="section-inner">
     <div class="section-header">
@@ -1947,56 +1630,95 @@
   </div>
 </section>
 
-<!-- ─── Footer ────────────────────────────────────────── -->
+<!-- ─── Footer ─────────────────────────────────────────── -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-top">
-
-      <div class="footer-brand">
-        <img src="photo/logo/logo2.jpg" alt="City Square Shopping Center">
-        <p class="footer-tagline">A family shopping tradition in the heart of Kalihi, Honolulu, Hawaiʻi.</p>
+      <div>
+        <img src="photo/logo/logo2.jpg" alt="City Square" class="footer-logo">
+        <p class="footer-tagline">A neighborhood institution in Kalihi — fresh food, local shops, and community at the heart of Honolulu.</p>
         <div class="footer-social">
-          <a href="https://www.instagram.com/citysquarehi" class="social-icon" aria-label="Instagram" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-          <a href="https://www.facebook.com/CitySquareHI" class="social-icon" aria-label="Facebook" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
         </div>
       </div>
-
       <div>
-        <div class="footer-col-title">Explore</div>
-        <ul class="footer-links">
-          <li><a href="#eat">Restaurants</a></li>
-          <li><a href="#marketplace">Marketplace</a></li>
-          <li><a href="#shops">Shops &amp; Services</a></li>
-          <li><a href="#events">Events</a></li>
-        </ul>
+        <div class="footer-col-title">Hours</div>
+        <div class="footer-info">
+          <span>Marketplace: Mon–Sun 8am–4pm</span>
+          <span>Restaurants: Varies by tenant</span>
+          <span>Shops: Varies by tenant</span>
+        </div>
       </div>
-
       <div>
-        <div class="footer-col-title">Visit</div>
-        <ul class="footer-links">
-          <li><a href="#visit">Hours &amp; Locations</a></li>
-          <li><a href="#">Parking</a></li>
-          <li><a href="#leasing">Leasing</a></li>
-          <li><a href="#leasing">Management</a></li>
-        </ul>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-info">
+          <span>1199 Dillingham Blvd<br>Honolulu, HI 96817</span>
+          <span><a href="tel:8088326999">(808) 832-6999</a></span>
+          <span><a href="mailto:management@citysquarehawaii.com">management@citysquarehawaii.com</a></span>
+          <span style="margin-top:4px;"><a href="#leasing">Leasing Inquiries →</a></span>
+        </div>
       </div>
-
-      <div>
-        <div class="footer-col-title">Connect</div>
-        <ul class="footer-links">
-          <li><a href="#">@CitySquareHI</a></li>
-          <li><a href="mailto:management@citysquarehawaii.com">Contact Us</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-
     </div>
     <div class="footer-bottom">
-      <span>© 2024 City Square Shopping Center · 1199 Dillingham Blvd, Honolulu, HI 96817</span>
-      <span>Concept Mockup</span>
+      <span>© 2026 City Square Shopping Center · Honolulu, HI</span>
     </div>
   </div>
 </footer>
+
+<!-- ─── Scroll nav arrows ──────────────────────────────── -->
+<div class="scroll-nav">
+  <button class="scroll-btn hidden" id="scroll-up" aria-label="Scroll up">&#8679;</button>
+  <button class="scroll-btn" id="scroll-down" aria-label="Scroll down">&#8681;</button>
+</div>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('nav-hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('is-open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('is-open');
+    });
+  });
+
+  // Scroll arrows
+  const scrollUp = document.getElementById('scroll-up');
+  const scrollDown = document.getElementById('scroll-down');
+  function updateScrollBtns() {
+    const scrolled = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    scrollUp.classList.toggle('hidden', scrolled < 80);
+    scrollDown.classList.toggle('hidden', scrolled >= maxScroll - 40);
+  }
+  scrollUp.addEventListener('click', () => window.scrollBy({ top: -window.innerHeight * 0.85, behavior: 'smooth' }));
+  scrollDown.addEventListener('click', () => window.scrollBy({ top: window.innerHeight * 0.85, behavior: 'smooth' }));
+  window.addEventListener('scroll', updateScrollBtns, { passive: true });
+  updateScrollBtns();
+
+  // Resume hero video after browser backgrounding or bfcache restore (mobile)
+  function resumeHeroVideo() {
+    document.querySelectorAll('.hero-video').forEach(v => {
+      if (getComputedStyle(v).display !== 'none') v.play().catch(() => {});
+    });
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') resumeHeroVideo();
+  });
+  window.addEventListener('pageshow', e => {
+    window.scrollTo(0, 0);
+    if (e.persisted) resumeHeroVideo();
+  });
+</script>
 
 </body>
 </html>

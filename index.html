@@ -168,6 +168,221 @@
   }
   .nav-cta:hover { background: var(--leaf-deep); }
 
+  /* ── Search ──────────────────────────────────────── */
+  .nav-search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--ink);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.18s, border-color 0.18s;
+  }
+  .nav-search-btn:hover { background: var(--gray-1); border-color: var(--gray-3); }
+  .nav-search-btn svg { width: 18px; height: 18px; display: block; }
+
+  .hero-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 560px;
+    margin: 24px 0 28px;
+    padding: 15px 22px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: rgba(255,255,255,0.92);
+    font-family: inherit;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.18s, border-color 0.18s;
+  }
+  .hero-search:hover {
+    background: rgba(255,255,255,0.22);
+    border-color: rgba(255,255,255,0.6);
+  }
+  .hero-search svg { width: 19px; height: 19px; flex-shrink: 0; }
+  .hero-search span { flex: 1; }
+  .hero-search kbd {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.12);
+    white-space: nowrap;
+  }
+
+  .search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 88px 24px 24px;
+    background: rgba(10,20,12,0.5);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+  .search-overlay.open { display: flex; }
+  body.search-open .scroll-nav { display: none; }
+  .search-panel {
+    width: 100%;
+    max-width: 620px;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 24px 64px rgba(26,20,16,0.28);
+    overflow: hidden;
+  }
+  .search-input-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .search-input-row svg { width: 20px; height: 20px; color: var(--gray-3); flex-shrink: 0; }
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: none;
+    font-family: inherit;
+    font-size: 17px;
+    color: var(--ink);
+    min-width: 0;
+  }
+  .search-input::placeholder { color: var(--gray-3); }
+  .search-close {
+    border: 1px solid var(--border);
+    background: none;
+    border-radius: 6px;
+    padding: 4px 9px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(26,20,16,0.55);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .search-close:hover { background: var(--gray-1); color: var(--ink); }
+
+  .search-results {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 0 10px;
+  }
+  .search-group {
+    padding: 12px 22px 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(26,20,16,0.45);
+  }
+  .search-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 10px 22px;
+    border: none;
+    background: none;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .search-row.active { background: var(--leaf-light); }
+  .search-row-text { flex: 1; min-width: 0; }
+  .search-row-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .search-row-meta {
+    font-size: 12.5px;
+    color: rgba(26,20,16,0.55);
+    line-height: 1.4;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .search-row mark {
+    background: rgba(212,164,55,0.32);
+    color: inherit;
+    border-radius: 2px;
+  }
+  .search-phone {
+    flex-shrink: 0;
+    padding: 6px 13px;
+    border-radius: 999px;
+    background: var(--leaf);
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .search-phone:hover { background: var(--leaf-deep); }
+  .search-empty {
+    padding: 26px 22px 30px;
+    text-align: center;
+    font-size: 14.5px;
+    color: rgba(26,20,16,0.6);
+    line-height: 1.7;
+  }
+  .search-empty strong { color: var(--ink); }
+  .search-empty a { color: var(--leaf); font-weight: 600; }
+  .search-hint {
+    flex-shrink: 0;
+    padding: 10px 22px;
+    border-top: 1px solid var(--border);
+    background: var(--gray-1);
+    font-size: 12px;
+    color: rgba(26,20,16,0.5);
+    display: flex;
+    gap: 16px;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .search-flash {
+    animation: searchFlash 1.6s ease-out;
+  }
+  @keyframes searchFlash {
+    0%, 55% {
+      box-shadow: 0 0 0 3px var(--leaf), var(--shadow-hover);
+    }
+    100% {
+      box-shadow: 0 0 0 3px rgba(47,93,58,0), var(--shadow);
+    }
+  }
+
   /* ── Hero (video) ────────────────────────────────── */
   .hero {
     position: relative;
@@ -338,6 +553,7 @@
   /* ── Section wrapper ─────────────────────────────── */
   .section {
     padding: 72px 40px;
+    scroll-margin-top: 96px;
   }
   .section-inner {
     max-width: 1200px;
@@ -476,10 +692,86 @@
   }
   .see-all-link:hover { border-color: var(--ink); background: var(--gray-1); }
 
+  /* ── Photo gallery (section lead-in) ─────────────── */
+  .photo-gallery {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    height: 360px;
+    margin-bottom: 48px;
+  }
+  .photo-gallery img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    display: block;
+  }
+  .pg-large { grid-row: span 2; }
+
+  /* ── Directory (name / phone / website / hours) ──── */
+  .directory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .dir-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 24px 26px;
+  }
+  .dir-cat {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--leaf);
+    margin-bottom: 6px;
+  }
+  .dir-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .dir-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .dir-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .dir-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--leaf-light);
+    color: var(--leaf);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .dir-row a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  .dir-row a:hover { color: var(--leaf); }
+
   /* ── Marketplace highlight strip ─────────────────── */
   .highlight-strip {
     background: var(--leaf-deep);
     padding: 52px 40px;
+    scroll-margin-top: 96px;
   }
   .highlight-strip-inner {
     max-width: 1200px;
@@ -735,6 +1027,7 @@
     background: var(--leaf-deep);
     color: var(--white);
     padding: 88px 40px;
+    scroll-margin-top: 96px;
   }
   .leasing-hero-inner {
     max-width: 1200px;
@@ -1026,10 +1319,16 @@
   @media (max-width: 1024px) {
     .vendor-photo { width: 160px; }
     .mkt-cat-photo { width: 140px; }
+    .directory-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 900px) {
     .nav { padding: 0 24px; gap: 16px; }
-    .nav-hamburger { display: flex; }
+    .nav-hamburger { display: flex; margin-left: 0; }
+    .nav-search-btn { margin-left: auto; }
+    .search-overlay { padding: 0; }
+    .search-panel { max-width: none; border-radius: 0; height: 100%; }
+    .hero-search { margin: 20px 0 24px; padding: 13px 18px; font-size: 15px; }
+    .hero-search kbd { display: none; }
     .nav-links {
       display: none;
       position: fixed;
@@ -1053,6 +1352,9 @@
     .section { padding: 52px 24px; }
     .vendor-grid { grid-template-columns: 1fr; }
     .shops-grid { grid-template-columns: 1fr; }
+    .directory-grid { grid-template-columns: 1fr; }
+    .photo-gallery { height: auto; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 140px); }
+    .pg-large { grid-row: span 1; grid-column: span 2; }
     .highlight-strip { padding: 40px 24px; }
     .highlight-strip-inner { flex-direction: column; gap: 28px; }
     .visit-grid { grid-template-columns: 1fr; }
@@ -1103,6 +1405,9 @@
     <li><a href="#visit">Visit</a></li>
     <li><a href="#leasing">Leasing</a></li>
   </ul>
+  <button class="nav-search-btn" id="nav-search-btn" aria-label="Search City Square">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </button>
   <a href="https://maps.google.com/?q=1199+Dillingham+Blvd+Honolulu+HI" class="nav-cta" target="_blank">Get Directions</a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -1112,16 +1417,21 @@
 <!-- ─── Hero ───────────────────────────────────────────── -->
 <section class="hero">
   <video class="hero-video hero-video-desktop" autoplay muted loop playsinline>
-    <source src="photo/city_square_desktop_1080p.mp4" type="video/mp4">
+    <source src="photo/landing_video.mp4" type="video/mp4">
   </video>
   <video class="hero-video hero-video-mobile" autoplay muted loop playsinline>
-    <source src="photo/city_square_mobile_720p.mp4" type="video/mp4">
+    <source src="photo/landing_video_mobile.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">City Square · Kalihi, Hawaiʻi</div>
 
     <p class="hero-sub">Fresh produce, local eats, and everyday essentials — all under one roof in the heart of Honolulu.</p>
+    <button class="hero-search" id="hero-search-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>Search stores, food, services…</span>
+      <kbd id="hero-search-kbd">Ctrl K</kbd>
+    </button>
     <div class="hero-actions">
       <a href="#marketplace" class="btn-primary">Visit the Marketplace</a>
       <a href="#eat" class="btn-outline">Explore Restaurants</a>
@@ -1193,56 +1503,71 @@
       <h2 class="section-title">Marketplace Vendors</h2>
       <p class="section-desc">Find fresh produce, seafood, meats, and specialty goods from our local vendors inside the marketplace.</p>
     </div>
-    <div class="vendor-grid">
+    <div class="photo-gallery">
+      <img src="photo/market%20place/market-place1-web.jpg" alt="Aisle of vendor stalls inside the City Square marketplace" class="pg-large">
+      <img src="photo/market%20place/market-place2-web.jpg" alt="Shelves of grocery goods at a marketplace stall">
+      <img src="photo/market%20place/market-place3-web.jpg" alt="Fresh fish for sale at a marketplace seafood stall">
+      <img src="photo/market%20place/veggietable.jpg" alt="Fresh vegetables at Farm Life">
+      <img src="photo/market%20place/seafood.jpg" alt="Fresh seafood on ice">
+    </div>
+    <div class="directory-grid">
 
-      <div class="vendor-card">
-        <img src="photo/market%20place/veggietable.jpg" alt="Farm Life" class="vendor-photo">
-        <div class="vendor-body">
-          <div class="vendor-category">Fresh Produce</div>
-          <div class="vendor-name">Farm Life</div>
-          <div class="vendor-desc">Locally grown vegetables, fruits, and farm-fresh goods — straight from the farm to your table every morning.</div>
-          <div class="cta-row">
-            <a href="tel:8083971991" class="cta-btn cta-call">Call</a>
-            <a href="#" class="cta-btn cta-more">Learn More</a>
+      <div class="dir-card">
+        <div class="dir-cat">Fresh Produce</div>
+        <div class="dir-name">Farm Life</div>
+        <div class="dir-rows">
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <a href="tel:8083971991">(808) 397-1991</a>
+          </div>
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Mon&ndash;Sun &middot; 8am&ndash;4pm</span>
           </div>
         </div>
       </div>
 
-      <div class="vendor-card">
-        <img src="photo/market%20place/seafood.jpg" alt="Brian's Seafood Market" class="vendor-photo">
-        <div class="vendor-body">
-          <div class="vendor-category">Seafood</div>
-          <div class="vendor-name">Brian's Seafood Market</div>
-          <div class="vendor-desc">Fresh catch daily — whole fish, fillets, and shellfish sourced from local Hawaii waters and beyond.</div>
-          <div class="cta-row">
-            <a href="tel:8085546872" class="cta-btn cta-call">Call</a>
-            <a href="#" class="cta-btn cta-more">Learn More</a>
+      <div class="dir-card">
+        <div class="dir-cat">Seafood</div>
+        <div class="dir-name">Brian's Seafood Market</div>
+        <div class="dir-rows">
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <a href="tel:8085546872">(808) 554-6872</a>
+          </div>
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Mon&ndash;Sun &middot; 8am&ndash;4pm</span>
           </div>
         </div>
       </div>
 
-      <div class="vendor-card">
-        <img src="photo/market%20place/seafood.jpg" alt="Marivic Seafood & Meats" class="vendor-photo" style="object-position: right center;">
-        <div class="vendor-body">
-          <div class="vendor-category">Meat &amp; More</div>
-          <div class="vendor-name">Marivic Seafood &amp; Meats</div>
-          <div class="vendor-desc">Quality cuts of pork, beef, and poultry alongside fresh seafood selections — your one-stop protein shop.</div>
-          <div class="cta-row">
-            <a href="tel:8087418127" class="cta-btn cta-call">Call</a>
-            <a href="#" class="cta-btn cta-more">Learn More</a>
+      <div class="dir-card">
+        <div class="dir-cat">Meat &amp; More</div>
+        <div class="dir-name">Marivic Seafood &amp; Meats</div>
+        <div class="dir-rows">
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <a href="tel:8087418127">(808) 741-8127</a>
+          </div>
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Mon&ndash;Sun &middot; 8am&ndash;4pm</span>
           </div>
         </div>
       </div>
 
-      <div class="vendor-card">
-        <img src="photo/market%20place/knife.jpg" alt="AFrames Tokyo" class="vendor-photo" style="object-position: center top;">
-        <div class="vendor-body">
-          <div class="vendor-category">Retail &amp; Specialty</div>
-          <div class="vendor-name">AFrames Tokyo</div>
-          <div class="vendor-desc">Japanese kitchen knives, cookware, and specialty culinary goods — a hidden gem inside the marketplace.</div>
-          <div class="cta-row">
-            <a href="tel:8086791655" class="cta-btn cta-call">Call</a>
-            <a href="#" class="cta-btn cta-more">Learn More</a>
+      <div class="dir-card">
+        <div class="dir-cat">Retail &amp; Specialty</div>
+        <div class="dir-name">AFrames Tokyo</div>
+        <div class="dir-rows">
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <a href="tel:8086791655">(808) 679-1655</a>
+          </div>
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Mon&ndash;Sun &middot; 8am&ndash;4pm</span>
           </div>
         </div>
       </div>
@@ -1262,60 +1587,71 @@
       <h2 class="section-title">Eat. Gather. Enjoy.</h2>
       <p class="section-desc">From Japanese comfort food to Hawaiian classics, our restaurants bring the flavors of the world right here to Kalihi.</p>
     </div>
-    <div class="vendor-grid">
+    <div class="photo-gallery">
+      <img src="photo/market%20place/jays5-web.jpg" alt="Poke bowl served at a City Square restaurant" class="pg-large">
+      <img src="photo/market%20place/thai-web.jpg" alt="Server presenting a bowl of soup at a Thai restaurant">
+      <img src="photo/market%20place/ubae3-web.jpg" alt="Purple sweet potato tarts at a City Square bakery">
+      <img src="photo/market%20place/youngs-web.jpg" alt="Young's Fish Market counter">
+      <img src="photo/market%20place/kamehameha.jpg" alt="Kamehameha Bakery">
+    </div>
+    <div class="directory-grid">
 
-      <div class="vendor-card">
-        <img src="photo/market%20place/food1.jpg" alt="Chef's Ramen" class="vendor-photo">
-        <div class="vendor-body">
-          <div class="vendor-category">Japanese</div>
-          <div class="vendor-name">Chef's Ramen</div>
-          <div class="vendor-desc">Tonkotsu ramen, Japanese curry, and delicious comfort food with a local flare.</div>
-          <div class="cta-row">
-            <a href="tel:8088426660" class="cta-btn cta-call">Call</a>
-            <a href="#" class="cta-btn cta-menu">View Menu</a>
-            <a href="#" class="cta-btn cta-more">Learn More</a>
+      <div class="dir-card">
+        <div class="dir-cat">Japanese</div>
+        <div class="dir-name">Chef's Ramen</div>
+        <div class="dir-rows">
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <a href="tel:8088426660">(808) 842-6660</a>
+          </div>
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Hours vary &mdash; call to confirm</span>
           </div>
         </div>
       </div>
 
-      <div class="vendor-card">
-        <img src="photo/market%20place/youngs.jpg" alt="Young's Fish Market" class="vendor-photo">
-        <div class="vendor-body">
-          <div class="vendor-category">Hawaiian</div>
-          <div class="vendor-name">Young's Fish Market</div>
-          <div class="vendor-desc">Ono Hawaiian dishes — laulau, poke, and local-style plate lunches done right.</div>
-          <div class="cta-row">
-            <a href="tel:8088414885" class="cta-btn cta-call">Call</a>
-            <a href="#" class="cta-btn cta-menu">View Menu</a>
-            <a href="#" class="cta-btn cta-more">Learn More</a>
+      <div class="dir-card">
+        <div class="dir-cat">Hawaiian</div>
+        <div class="dir-name">Young's Fish Market</div>
+        <div class="dir-rows">
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <a href="tel:8088414885">(808) 841-4885</a>
+          </div>
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Hours vary &mdash; call to confirm</span>
           </div>
         </div>
       </div>
 
-      <div class="vendor-card">
-        <img src="photo/market%20place/kamehameha.jpg" alt="Kamehameha Bakery" class="vendor-photo" style="object-position: center top;">
-        <div class="vendor-body">
-          <div class="vendor-category">Bakery</div>
-          <div class="vendor-name">Kamehameha Bakery</div>
-          <div class="vendor-desc">Famous glazed poi and haupia malasadas — a Hawaiʻi institution since forever.</div>
-          <div class="cta-row">
-            <a href="tel:8088455831" class="cta-btn cta-call">Call</a>
-            <a href="#" class="cta-btn cta-menu">View Menu</a>
-            <a href="#" class="cta-btn cta-more">Learn More</a>
+      <div class="dir-card">
+        <div class="dir-cat">Bakery</div>
+        <div class="dir-name">Kamehameha Bakery</div>
+        <div class="dir-rows">
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <a href="tel:8088455831">(808) 845-5831</a>
+          </div>
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Hours vary &mdash; call to confirm</span>
           </div>
         </div>
       </div>
 
-      <div class="vendor-card">
-        <img src="photo/market%20place/food2.jpg" alt="Koala Moa Rotisserie Chicken" class="vendor-photo">
-        <div class="vendor-body">
-          <div class="vendor-category">Hawaiian Local</div>
-          <div class="vendor-name">Koala Moa Rotisserie Chicken</div>
-          <div class="vendor-desc">Juicy, golden rotisserie chicken — simple, satisfying, and always fresh out of the rotisserie.</div>
-          <div class="cta-row">
-            <a href="tel:8085236701" class="cta-btn cta-call">Call</a>
-            <a href="#" class="cta-btn cta-menu">View Menu</a>
-            <a href="#" class="cta-btn cta-more">Learn More</a>
+      <div class="dir-card">
+        <div class="dir-cat">Hawaiian Local</div>
+        <div class="dir-name">Koala Moa Rotisserie Chicken</div>
+        <div class="dir-rows">
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <a href="tel:8085236701">(808) 523-6701</a>
+          </div>
+          <div class="dir-row">
+            <span class="dir-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Hours vary &mdash; call to confirm</span>
           </div>
         </div>
       </div>
@@ -1670,6 +2006,26 @@
   </div>
 </footer>
 
+<!-- ─── Search overlay ─────────────────────────────────── -->
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search City Square">
+  <div class="search-panel" id="search-panel">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" id="search-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+             placeholder="Search stores, food, phone numbers…"
+             role="combobox" aria-expanded="true" aria-controls="search-results" aria-autocomplete="list">
+      <button class="search-close" id="search-close" type="button">Esc</button>
+    </div>
+    <div class="search-results" id="search-results" role="listbox" aria-label="Search results"></div>
+    <div class="sr-only" id="search-status" aria-live="polite"></div>
+    <div class="search-hint">
+      <span>↑↓ to navigate</span>
+      <span>↵ to open</span>
+      <span>esc to close</span>
+    </div>
+  </div>
+</div>
+
 <!-- ─── Scroll nav arrows ──────────────────────────────── -->
 <div class="scroll-nav">
   <button class="scroll-btn hidden" id="scroll-up" aria-label="Scroll up">&#8679;</button>
@@ -1718,6 +2074,327 @@
     window.scrollTo(0, 0);
     if (e.persisted) resumeHeroVideo();
   });
+
+  // ── Search ──────────────────────────────────────────
+  (function () {
+    const GROUP_ORDER = ['Restaurants', 'Marketplace', 'Shops & Services'];
+    const SECTION_GROUP = {
+      '.mkt-section': 'Marketplace',
+      '#eat': 'Restaurants',
+      '#shops': 'Shops & Services'
+    };
+
+    function stripDiacritics(s) {
+      return s.normalize('NFD').replace(/[̀-ͯ]/g, '');
+    }
+    function normalize(s) {
+      return stripDiacritics(s || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+    }
+    function digits(s) {
+      return (s || '').replace(/\D+/g, '');
+    }
+    function escapeHtml(s) {
+      return (s || '').replace(/[&<>"']/g, ch => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[ch]));
+    }
+
+    // ── Build index from the DOM ──
+    function buildIndex() {
+      const entries = [];
+
+      document.querySelectorAll('.vendor-card, .shop-card, .dir-card').forEach(card => {
+        const nameSel = card.classList.contains('vendor-card') ? '.vendor-name'
+          : card.classList.contains('shop-card') ? '.shop-name' : '.dir-name';
+        const catSel = card.classList.contains('vendor-card') ? '.vendor-category'
+          : card.classList.contains('shop-card') ? '.shop-cat' : '.dir-cat';
+        const descSel = card.classList.contains('vendor-card') ? '.vendor-desc'
+          : card.classList.contains('shop-card') ? '.shop-desc' : null;
+        const name = card.querySelector(nameSel);
+        const cat = card.querySelector(catSel);
+        const desc = descSel ? card.querySelector(descSel) : null;
+        const phoneLink = card.querySelector('a[href^="tel:"]');
+        if (!name) return;
+
+        let group = 'Marketplace';
+        for (const sel in SECTION_GROUP) {
+          if (card.closest(sel)) { group = SECTION_GROUP[sel]; break; }
+        }
+
+        entries.push({
+          type: 'business',
+          group,
+          name: name.textContent.trim(),
+          category: cat ? cat.textContent.trim() : '',
+          body: desc ? desc.textContent.trim() : '',
+          phone: phoneLink ? phoneLink.getAttribute('href').replace('tel:', '') : '',
+          el: card
+        });
+      });
+
+      return entries;
+    }
+
+    let INDEX = [];
+    let normCache = new WeakMap();
+    function normEntry(entry) {
+      let n = normCache.get(entry);
+      if (!n) {
+        n = {
+          name: normalize(entry.name),
+          category: normalize(entry.category),
+          body: normalize(entry.body),
+          digits: digits(entry.phone)
+        };
+        normCache.set(entry, n);
+      }
+      return n;
+    }
+
+    // ── Matching ──
+    function scoreEntry(entry, tokens, rawDigits) {
+      const n = normEntry(entry);
+      let total = 0;
+      for (const tok of tokens) {
+        let best = 0;
+        if (n.name === tok) best = 100;
+        else if (n.name.startsWith(tok)) best = 95;
+        else if (n.name.split(' ').some(w => w.startsWith(tok))) best = 80;
+        else if (n.name.includes(tok)) best = 60;
+        else if (n.category.includes(tok)) best = 40;
+        else if (n.body.includes(tok)) best = 25;
+        else if (rawDigits && n.digits.includes(rawDigits)) best = 15;
+        if (best === 0) return 0; // every token must match
+        total += best;
+      }
+      return total;
+    }
+
+    function search(query) {
+      const tokens = normalize(query).split(' ').filter(Boolean);
+      const rawDigits = digits(query);
+      if (!tokens.length) return [];
+      const results = [];
+      for (const entry of INDEX) {
+        const score = scoreEntry(entry, tokens, rawDigits.length >= 3 ? rawDigits : '');
+        if (score > 0) results.push({ entry, score });
+      }
+      results.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return GROUP_ORDER.indexOf(a.entry.group) - GROUP_ORDER.indexOf(b.entry.group);
+      });
+      return results.slice(0, 10).map(r => r.entry);
+    }
+
+    function browseList() {
+      const perGroup = 3;
+      const out = [];
+      for (const g of GROUP_ORDER) {
+        INDEX.filter(e => e.group === g).slice(0, perGroup).forEach(e => out.push(e));
+      }
+      return out;
+    }
+
+    // ── Rendering ──
+    function highlight(text, tokens) {
+      const escaped = escapeHtml(text);
+      if (!tokens.length) return escaped;
+      let pattern;
+      try {
+        pattern = new RegExp('(' + tokens.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')', 'ig');
+      } catch (e) {
+        return escaped;
+      }
+      return escaped.replace(pattern, '<mark>$1</mark>');
+    }
+
+    function formatPhone(raw) {
+      const d = digits(raw);
+      if (d.length === 10) {
+        return '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
+      }
+      return raw;
+    }
+
+    const overlay = document.getElementById('search-overlay');
+    const panel = document.getElementById('search-panel');
+    const input = document.getElementById('search-input');
+    const resultsEl = document.getElementById('search-results');
+    const statusEl = document.getElementById('search-status');
+    const closeBtn = document.getElementById('search-close');
+    const navBtn = document.getElementById('nav-search-btn');
+    const heroBtn = document.getElementById('hero-search-btn');
+    const heroKbd = document.getElementById('hero-search-kbd');
+
+    if (navigator.platform && /Mac/.test(navigator.platform)) {
+      heroKbd.textContent = 'Cmd K';
+    }
+
+    let currentResults = [];
+    let activeIndex = -1;
+    let lastFocused = null;
+
+    function renderResults(query) {
+      const tokens = normalize(query).split(' ').filter(Boolean);
+      const isBrowse = tokens.length === 0;
+      currentResults = isBrowse ? browseList() : search(query);
+      activeIndex = currentResults.length ? 0 : -1;
+
+      if (!currentResults.length) {
+        resultsEl.innerHTML =
+          '<div class="search-empty">No matches for <strong>' + escapeHtml(query) + '</strong>.<br>' +
+          'Try a store name, category, or phone number — or call management at ' +
+          '<a href="tel:8088326999">(808) 832-6999</a>.</div>';
+        statusEl.textContent = 'No results';
+        return;
+      }
+
+      let html = '';
+      let lastGroup = null;
+      currentResults.forEach((entry, i) => {
+        if (entry.group !== lastGroup) {
+          html += '<div class="search-group">' + escapeHtml(entry.group) + '</div>';
+          lastGroup = entry.group;
+        }
+        const metaParts = [entry.category].filter(Boolean);
+        if (!isBrowse && entry.body) metaParts.push(entry.body);
+        const meta = metaParts.join(' · ');
+        const phoneHtml = entry.phone
+          ? '<a class="search-phone" href="tel:' + escapeHtml(entry.phone) + '" data-stop="1">' + formatPhone(entry.phone) + '</a>'
+          : '';
+        html +=
+          '<button type="button" class="search-row' + (i === activeIndex ? ' active' : '') + '" role="option" ' +
+          'id="search-opt-' + i + '" data-idx="' + i + '" aria-selected="' + (i === activeIndex) + '">' +
+          '<div class="search-row-text">' +
+          '<div class="search-row-name">' + highlight(entry.name, tokens) + '</div>' +
+          (meta ? '<div class="search-row-meta">' + highlight(meta, tokens) + '</div>' : '') +
+          '</div>' + phoneHtml +
+          '</button>';
+      });
+      resultsEl.innerHTML = html;
+      statusEl.textContent = currentResults.length + ' result' + (currentResults.length === 1 ? '' : 's');
+      updateActiveDescendant();
+    }
+
+    function updateActiveDescendant() {
+      resultsEl.querySelectorAll('.search-row').forEach((row, i) => {
+        row.classList.toggle('active', i === activeIndex);
+        row.setAttribute('aria-selected', i === activeIndex);
+      });
+      if (activeIndex >= 0) {
+        input.setAttribute('aria-activedescendant', 'search-opt-' + activeIndex);
+        const activeRow = resultsEl.querySelector('.search-row.active');
+        if (activeRow) activeRow.scrollIntoView({ block: 'nearest' });
+      } else {
+        input.removeAttribute('aria-activedescendant');
+      }
+    }
+
+    function activateEntry(entry) {
+      closeSearch();
+      const el = entry.el;
+      if (!el) return;
+      window.setTimeout(() => {
+        const top = el.getBoundingClientRect().top + window.scrollY - 116;
+        window.scrollTo({ top, behavior: 'smooth' });
+        el.classList.add('search-flash');
+        window.setTimeout(() => el.classList.remove('search-flash'), 1600);
+      }, 10);
+    }
+
+    function openSearch(fromHero) {
+      INDEX = buildIndex();
+      lastFocused = document.activeElement;
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('is-open');
+      document.body.classList.add('search-open');
+      const prevOverflow = document.body.style.overflow;
+      document.body.dataset.prevOverflow = prevOverflow;
+      document.body.style.overflow = 'hidden';
+      overlay.classList.add('open');
+      input.value = '';
+      renderResults('');
+      window.setTimeout(() => input.focus(), 0);
+    }
+
+    function closeSearch() {
+      overlay.classList.remove('open');
+      document.body.classList.remove('search-open');
+      document.body.style.overflow = document.body.dataset.prevOverflow || '';
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+
+    function isOpen() {
+      return overlay.classList.contains('open');
+    }
+
+    navBtn.addEventListener('click', () => openSearch(false));
+    heroBtn.addEventListener('click', () => openSearch(true));
+    closeBtn.addEventListener('click', closeSearch);
+    overlay.addEventListener('mousedown', e => {
+      if (e.target === overlay) closeSearch();
+    });
+
+    input.addEventListener('input', () => renderResults(input.value));
+
+    resultsEl.addEventListener('click', e => {
+      const phoneLink = e.target.closest('[data-stop]');
+      if (phoneLink) { e.stopPropagation(); return; }
+      const row = e.target.closest('.search-row');
+      if (!row) return;
+      const idx = Number(row.dataset.idx);
+      const entry = currentResults[idx];
+      if (entry) activateEntry(entry);
+    });
+
+    input.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (currentResults.length) {
+          activeIndex = (activeIndex + 1) % currentResults.length;
+          updateActiveDescendant();
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (currentResults.length) {
+          activeIndex = (activeIndex - 1 + currentResults.length) % currentResults.length;
+          updateActiveDescendant();
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const entry = currentResults[activeIndex];
+        if (entry) activateEntry(entry);
+      } else if (e.key === 'Escape') {
+        closeSearch();
+      }
+    });
+
+    document.addEventListener('keydown', e => {
+      const tag = (document.activeElement && document.activeElement.tagName) || '';
+      const typing = tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement.isContentEditable;
+
+      if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        isOpen() ? closeSearch() : openSearch(false);
+        return;
+      }
+      if (e.key === '/' && !typing && !isOpen()) {
+        e.preventDefault();
+        openSearch(false);
+        return;
+      }
+      if (e.key === 'Escape' && isOpen()) {
+        closeSearch();
+      }
+    });
+
+    window.addEventListener('pageshow', () => {
+      if (isOpen()) closeSearch();
+    });
+  })();
 </script>
 
 </body>
